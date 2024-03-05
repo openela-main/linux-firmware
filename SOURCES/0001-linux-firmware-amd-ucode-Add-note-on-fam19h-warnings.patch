@@ -1,0 +1,35 @@
+From d252e92d50c02623ea9da0a140240f6d7ac4558e Mon Sep 17 00:00:00 2001
+From: Sandipan Das <sandipan.das@amd.com>
+Date: Thu, 14 Sep 2023 20:16:51 +0530
+Subject: linux-firmware: amd-ucode: Add note on fam19h warnings
+
+When running 5.19+ kernels on Genoa or Bergamo systems, some microcode
+patches are known to trigger warnings in the PMI handler. Add a note
+to list the required minimum patch levels for addressing this problem.
+
+Signed-off-by: Sandipan Das <sandipan.das@amd.com>
+Signed-off-by: Josh Boyer <jwboyer@kernel.org>
+---
+ amd-ucode/README | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/amd-ucode/README b/amd-ucode/README
+index fac11524..f47743c1 100644
+--- a/amd-ucode/README
++++ b/amd-ucode/README
+@@ -53,3 +53,12 @@ a32b0f0db3f3 ("x86/microcode/AMD: Load late on both threads too")
+ When late loading the patches for Genoa or Bergamo, there may be one spurious
+ NMI observed per physical core. These NMIs are benign and don't cause any
+ functional issue but will result in kernel messages being logged.
++
++NOTE: When running 5.19+ kernels on Genoa or Bergamo systems, some microcode
++patches are known to trigger warnings in the PMI handler. The following are
++the required minimum patch levels to address this problem:
++
++  Family=0x19 Model=0x11 Stepping=0x01: Patch=0x0a10113e
++  Family=0x19 Model=0x11 Stepping=0x02: Patch=0x0a10123e
++  Family=0x19 Model=0xa0 Stepping=0x01: Patch=0x0aa00116
++  Family=0x19 Model=0xa0 Stepping=0x02: Patch=0x0aa00212
+-- 
+2.41.0
+

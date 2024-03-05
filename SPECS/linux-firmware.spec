@@ -1,12 +1,12 @@
-%global checkout 2e92a49f
+%global checkout 0e048b06
 
-%global firmware_release 117
+%global firmware_release 120
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20230404
+Version:	20230824
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -19,10 +19,13 @@ BuildArch:	noarch
 # 2) git archive --worktree-attributes --format=tar --prefix=linux-firmware-%%{checkout}/ %%{checkout} | xz > linux-firmware-%%{version}.tar.xz
 Source0:	%{name}-%{version}.tar.xz
 
-# Update AMD CPU microcode requested for https://bugzilla.redhat.com/show_bug.cgi?id=222715
-Patch01:	0001-linux-firmware-Update-AMD-cpu-microcode.patch
-Patch02:	0002-linux-firmware-Update-AMD-cpu-microcode.patch
-Patch03:	0003-linux-firmware-Update-AMD-fam17h-cpu-microcode.patch
+# Patches generated below were created with git running in the linux-firmware
+# upstream repository.
+# Latest AMD microcode addressing CVE-2023-20569, with WHENCE hunk excluded.
+# The patches were generated with:
+# git format-patch --keep-subject d252e92d50c02623ea9da0a140240f6d7ac4558e^..06afd7f939c5b245b2af9e0fee13026f2aaf77fa amd-ucode/
+Patch01: 0001-linux-firmware-amd-ucode-Add-note-on-fam19h-warnings.patch
+Patch02: 0002-linux-firmware-Update-AMD-cpu-microcode.patch
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -236,7 +239,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n libertas-usb8388-firmware
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
-Epoch:		2 
+Epoch:		2
 Obsoletes:	libertas-usb8388-firmware < 2:5.110.22.p23-8
 %description -n libertas-usb8388-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter
@@ -262,7 +265,6 @@ License:	Redistributable, no modification permitted
 Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
-
 %autosetup -S git -p1 -n linux-firmware-%{checkout}
 
 %build
@@ -270,6 +272,11 @@ Firmware for Marvell Libertas SD 8787 Network Adapter
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
+
+# Move amd-ucode readme to docs directory due to dracut issue (RHEL-16800)
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
+mv -f amd-ucode/README %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
+
 make DESTDIR=%{buildroot}/ FIRMWAREDIR=%{_firmwarepath} install
 
 pushd $RPM_BUILD_ROOT/%{_firmwarepath}
@@ -418,18 +425,43 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 %files -f linux-firmware.files
 %dir %{_firmwarepath}
+%doc %{_defaultdocdir}/%{name}
 %license WHENCE LICENCE.*
 %config(noreplace) %{_firmwarepath}/netronome/nic_AMDA*
 
 %changelog
-* Wed Aug 03 2023 Lucas Zampieri <lzampier@redhat.com> - 20230404-117.git2e92a49f
-- Update amd-ucode firmware for CVE-2023-20593 (rhbz 2227152)
+* Fri Nov 17 2023 Patrick Talbert <ptalbert@redhat.com> - 20230824-120.git0e048b06
+- Move amd-ucode README to docs directory due to dracut issue (RHEL-16800)
+- Update AMD cpu microcode from upstream 06afd7f939c5 (RHEL-16783)
+- Update amd-ucode/README from upstream d252e92d50c0 (RHEL-16783)
+- Revert 'Exclude AMD cpu ucode for fam19/*cpuid_0x00aa0f0*'
+Resolves: RHEL-16783, RHEL-16800
 
-* Wed Aug 02 2023 Lucas Zampieri <lzampier@redhat.com> - 20230404-116.git2e92a49f
-- Update amd-ucode firmware for CVE-2023-20593 (rhbz 2227152)
+* Tue Sep 26 2023 Patrick Talbert <ptalbert@redhat.com> - 20230824-119.git0e048b06
+- Exclude AMD cpu ucode for fam19/*cpuid_0x00aa0f0*
+Resolves: RHEL-3903
 
-* Mon Jul 31 2023 Lucas Zampieri <lzampier@redhat.com> - 20230404-115.git2e92a49f
-- Update amd-ucode firmware for CVE-2023-20593 (rhbz 2227152)
+* Thu Aug 24 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20230824-118.git0e048b06
+- Update to latest upstream linux-firmware image for assorted updates
+- AMD Zen3 and Zen4 firmware update for return address predictor velunerability
+Resolves: rhbz#2230415
+
+* Tue Aug 08 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20230808-117.git0ab353f8
+- Update to latest upstream linux-firmware image for assorted updates
+- Navi32 dGPU firmware
+- Update to fix multi monitor behind TBT3 dock & random flickers
+- AMD Zen2 firmware update for cross-process information leak
+Resolves: rhbz#2047482, rhbz#2227846, rhbz#2227153
+
+* Tue Jul 11 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20230711-116.gitd3f66064
+- Update to latest upstream linux-firmware image for assorted updates
+- AMD GPU firmware update: fix PSR-SU issues with kernel 6.2 or later
+Resolves: rhbz#2218670
+
+* Mon May 15 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20230515-115.gitd1962891
+- Update to latest upstream linux-firmware image for assorted updates
+- [RHEL8] Add latest NVIDIA signed firmware for Turing GPUs and later
+Resolves: rhbz#2183606
 
 * Wed Apr 05 2023 Patrick Talbert <ptalbert@redhat.com> - 20230404-114.git2e92a49f
 - Update to latest upstream linux-firmware image for assorted updates
