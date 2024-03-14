@@ -1,0 +1,29 @@
+From d50d13a9d8c3863a847077e6357fdde2bf39a88f Mon Sep 17 00:00:00 2001
+Message-Id: <d50d13a9d8c3863a847077e6357fdde2bf39a88f.1688365829.git.jstancek@redhat.com>
+From: Jan Stancek <jstancek@redhat.com>
+Date: Mon, 3 Jul 2023 08:30:14 +0200
+Subject: [PATCH] copy-firmware.sh: be verbose
+Content-type: text/plain
+
+Signed-off-by: Jan Stancek <jstancek@redhat.com>
+---
+ Makefile         |  2 +-
+ copy-firmware.sh | 14 +++++++++++---
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 50a4c29be5b4..a5480eee0730 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ install:
+ 
+ install-xz:
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+-	./copy-firmware.sh --xz $(DESTDIR)$(FIRMWAREDIR)
++	./copy-firmware.sh -v --xz $(DESTDIR)$(FIRMWAREDIR)
+ 
+ install-zst:
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
+-- 
+2.31.1
+
