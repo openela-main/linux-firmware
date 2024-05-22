@@ -1,12 +1,12 @@
-%global checkout 0e048b06
+%global checkout b3132c18
 
-%global firmware_release 120
+%global firmware_release 121
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20230824
+Version:	20240111
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -18,14 +18,6 @@ BuildArch:	noarch
 #    This is still causing problems in RHEL9 (see bug 1959913) and because of that we should keep out of RHEL8 too
 # 2) git archive --worktree-attributes --format=tar --prefix=linux-firmware-%%{checkout}/ %%{checkout} | xz > linux-firmware-%%{version}.tar.xz
 Source0:	%{name}-%{version}.tar.xz
-
-# Patches generated below were created with git running in the linux-firmware
-# upstream repository.
-# Latest AMD microcode addressing CVE-2023-20569, with WHENCE hunk excluded.
-# The patches were generated with:
-# git format-patch --keep-subject d252e92d50c02623ea9da0a140240f6d7ac4558e^..06afd7f939c5b245b2af9e0fee13026f2aaf77fa amd-ucode/
-Patch01: 0001-linux-firmware-amd-ucode-Add-note-on-fam19h-warnings.patch
-Patch02: 0002-linux-firmware-Update-AMD-cpu-microcode.patch
 
 Provides:	kernel-firmware = %{version} xorg-x11-drv-ati-firmware = 7.0
 Obsoletes:	kernel-firmware < %{version} xorg-x11-drv-ati-firmware < 6.13.0-0.22
@@ -265,19 +257,27 @@ License:	Redistributable, no modification permitted
 Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
-%autosetup -S git -p1 -n linux-firmware-%{checkout}
+%setup -q -n linux-firmware-%{checkout}
+%if 0
+git init .
+if [ -z "$GIT_COMMITTER_NAME" ]; then
+    git config user.email "nobody@fedoraproject.org"
+    git config user.name "Fedora linux-firmware packagers"
+fi
+git add .
+git commit -m init .
+
+git am %{patches}
+
+%endif
 
 %build
 
 %install
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}
 mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
-
-# Move amd-ucode readme to docs directory due to dracut issue (RHEL-16800)
-mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
-mv -f amd-ucode/README %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
-
-make DESTDIR=%{buildroot}/ FIRMWAREDIR=%{_firmwarepath} install
+# copy-firmware.sh requires rdfind unless we pass --ignore-duplicates.
+make DESTDIR=%{buildroot}/ FIRMWAREDIR=%{_firmwarepath} COPYOPTS="--ignore-duplicates" install
 
 pushd $RPM_BUILD_ROOT/%{_firmwarepath}
 # Remove firmware shipped in separate packages already
@@ -402,6 +402,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-ty-a0-gf-a0*.pnvm
 %{_firmwarepath}/iwlwifi-so-a0-*.ucode
 %{_firmwarepath}/iwlwifi-so-a0-*.pnvm
+%{_firmwarepath}/iwlwifi-gl-*.ucode
+%{_firmwarepath}/iwlwifi-gl-*.pnvm
+%{_firmwarepath}/iwlwifi-ma-*.ucode
+%{_firmwarepath}/iwlwifi-ma-*.pnvm
 
 %files -n libertas-usb8388-firmware
 %license WHENCE LICENCE.Marvell
@@ -425,21 +429,25 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 %files -f linux-firmware.files
 %dir %{_firmwarepath}
-%doc %{_defaultdocdir}/%{name}
 %license WHENCE LICENCE.*
 %config(noreplace) %{_firmwarepath}/netronome/nic_AMDA*
 
 %changelog
-* Fri Nov 17 2023 Patrick Talbert <ptalbert@redhat.com> - 20230824-120.git0e048b06
-- Move amd-ucode README to docs directory due to dracut issue (RHEL-16800)
-- Update AMD cpu microcode from upstream 06afd7f939c5 (RHEL-16783)
-- Update amd-ucode/README from upstream d252e92d50c0 (RHEL-16783)
-- Revert 'Exclude AMD cpu ucode for fam19/*cpuid_0x00aa0f0*'
-Resolves: RHEL-16783, RHEL-16800
+* Thu Jan 11 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240111-121.gitb3132c18
+- Pass --ignore-duplicates to copy-firmware.sh
+- AMD Zen3 and Zen4: fix for INVD instruction causing loss of SEV-ES guest machine memory integrity
+Resolves: RHEL-13982
 
-* Tue Sep 26 2023 Patrick Talbert <ptalbert@redhat.com> - 20230824-119.git0e048b06
-- Exclude AMD cpu ucode for fam19/*cpuid_0x00aa0f0*
-Resolves: RHEL-3903
+* Wed Nov 22 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20231121-120.git9552083a
+- Work around absense of rdfind during build
+- Add file directives for new iwlwifi files
+Resolves: RHEL-16721, RHEL-14260
+
+* Tue Nov 21 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20231121-119.git9552083a
+- Update to latest upstream linux-firmware image for assorted updates
+- Update AMD cpu microcode
+- hw: intel: Fix protection mechanism failure for some Intel(R) PROSet/Wireless WiFi
+Resolves: RHEL-16721, RHEL-14260
 
 * Thu Aug 24 2023 Denys Vlasenko <dvlasenk@redhat.com> - 20230824-118.git0e048b06
 - Update to latest upstream linux-firmware image for assorted updates
