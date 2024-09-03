@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 143.1
+%global firmware_release 143.2
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20240603
+Version:	20240716
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -456,6 +456,152 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/netronome/*
 
 %changelog
+* Tue Jul 16 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240716-143.2
+- [Intel 9.5 FEAT] [SRF] QAT_402XX firmware update [rhel-9.4.z] (RHEL-47356)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom: move signed x1e80100 signed firmware to the SoC subdir
+- qcom: add video firmware file for vpu-3.0
+- amdgpu: update DMCUB to v0.0.225.0 for Various AMDGPU Asics
+- qcom: add gpu firmwares for x1e80100 chipset
+- linux-firmware: add firmware for qat_402xx devices
+- amdgpu: update raven firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update PSP 13.0.8 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update picasso firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update SDMA 6.0.1 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update VPE 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update SDMA 6.1.1 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update SDMA 6.1.0 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update SMU 13.0.7 firmware
+- amdgpu: update SDMA 6.0.2 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update raven2 firmware
+- amdgpu: update aldebaran firmware
+- linux-firmware: Update AMD cpu microcode
+- intel: avs: Add topology file for I2S Analog Devices 4567
+- intel: avs: Add topology file for I2S Nuvoton 8825
+- intel: avs: Add topology file for I2S Maxim 98927
+- intel: avs: Add topology file for I2S Maxim 98373
+- intel: avs: Add topology file for I2S Maxim 98357a
+- intel: avs: Add topology file for I2S Dialog 7219
+- intel: avs: Add topology file for I2S Realtek 5663
+- intel: avs: Add topology file for I2S Realtek 5640
+- intel: avs: Add topology file for I2S Realtek 5514
+- intel: avs: Add topology file for I2S Realtek 298
+- intel: avs: Add topology file for I2S Realtek 286
+- intel: avs: Add topology file for I2S Realtek 274
+- intel: avs: Add topology file for Digital Microphone Array
+- intel: avs: Add topology file for HDMI codecs
+- intel: avs: Add topology file for HDAudio codecs
+- Add a copy of Apache-2.0
+- intel: avs: Update AudioDSP base firmware for APL-based platforms
+- linux-firmware: Add ISH firmware file for Intel Lunar Lake platform
+- amdgpu: update DMCUB to v0.0.224.0 for Various AMDGPU Asics
+- cirrus: cs35l41: Update various firmware for ASUS laptops using CS35L41
+- amdgpu: Update ISP FW for isp v4.1.1
+- linux-firmware: mediatek: Update MT8173 VPU firmware to v1.2.0
+- qcom: Add AIC100 firmware files
+- amlogic: Update bluetooth firmware binary
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel Bluetooth Magnetor core
+- linux-firmware: Update firmware file for Intel Bluetooth Solar core
+- linux-firmware: Update firmware file for Intel Bluetooth Pulsar core
+- rtl_bt: Update RTL8822C BT UART firmware to 0xB5D6_6DCB
+- rtl_bt: Update RTL8822C BT USB firmware to 0xAED6_6DCB
+- amdgpu: update DMCUB to v0.0.222.0 for DCN314
+- iwlwifi: add ty/So/Ma firmwares for core88-87 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core88-87 release
+- linux-firmware: add new cc33xx firmware for cc33xx chips
+- cirrus: cs35l56: Update firmware for Cirrus CS35L56 for ASUS UM5606 laptop
+- cirrus: cs35l56: Update firmware for Cirrus CS35L56 for various ASUS laptops
+- Merge https://github.com/zijun-hu/qca_btfw into qca
+- linux-firmware: Add firmware for Lenovo Thinkbooks
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update SDMA 6.0.2 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update raven2 firmware
+- amdgpu: update raven firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update psp 13.0.8 firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update smu 13.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update picasso firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update SDMA 6.0.1 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update SMU 13.0.6 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update aldebaran firmware
+Resolves: RHEL-47356
+
 * Mon Jun 03 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240603-143.1
 - CVE-2023-31346 AMD SEV: reserved fields in guest message responses may not be zero initialized [rhel-9.4.z] (RHEL-35595)
   Changes since the last update are noted on items below, copied from
