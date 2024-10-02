@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 143.2
+%global firmware_release 143.3
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20240716
+Version:	20240905
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -219,7 +219,7 @@ contained inside the provided LICENSE file. Please read it carefully.
 %package -n libertas-usb8388-firmware
 Summary:	Firmware for Marvell Libertas USB 8388 Network Adapter
 License:	Redistributable, no modification permitted
-Epoch:		2 
+Epoch:		2
 Requires:	linux-firmware-whence
 %description -n libertas-usb8388-firmware
 Firmware for Marvell Libertas USB 8388 Network Adapter
@@ -424,6 +424,8 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-ty-a0-gf-a0.pnvm*
 %{_firmwarepath}/iwlwifi-so-a0-*.ucode*
 %{_firmwarepath}/iwlwifi-so-a0-*.pnvm*
+%{_firmwarepath}/iwlwifi-bz-b0-*.ucode*
+%{_firmwarepath}/iwlwifi-bz-b0-*.pnvm*
 
 %files -n libertas-usb8388-firmware
 %license LICENCE.Marvell
@@ -456,6 +458,82 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/netronome/*
 
 %changelog
+* Thu Sep 05 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240905-143.3
+- AMD SEV: IOMMU improperly handles certain special address leading to a loss of guest integrity (RHEL-54253)
+- AMD SEV: Incomplete system memory cleanup in SEV firmware corrupt guest private memory (RHEL-54241)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- cirrus: cs35l56: Add firmware for Cirrus CS35L54 for some HP laptops
+- amdgpu: Revert sienna cichlid dmcub firmware update
+- Merge tag 'iwlwifi-fw-2024-09-03' of http://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware into iwlwifi-20240903
+- iwlwifi: add Bz FW for core89-58 release
+- rtl_nic: add firmware rtl8126a-3
+- linux-firmware: update firmware for MT7921 WiFi device
+- linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+- amdgpu: update DMCUB to v0.0.232.0 for DCN314 and DCN351
+- qcom: vpu: restore compatibility with kernels before 6.6
+- amdgpu: DMCUB updates forvarious AMDGPU ASICs
+- rtw89: 8922a: add fw format-1 v0.35.41.0
+- linux-firmware: update firmware for MT7925 WiFi device
+- linux-firmware: update firmware for mediatek bluetooth chip (MT7925)
+- rtl_bt: Add firmware and config files for RTL8922A
+- rtl_bt: Add firmware file for the the RTL8723CS Bluetooth part
+- rtl_bt: de-dupe identical config.bin files
+- rename rtl8723bs_config-OBDA8723.bin -> rtl_bt/rtl8723bs_config.bin
+- linux-firmware: Update AMD SEV firmware
+- linux-firmware: update firmware for MT7996
+- Revert "i915: Update MTL DMC v2.22"
+- Merge tag 'amd-2024-08-12' of https://gitlab.freedesktop.org/drm/firmware into amd-2024-08-12
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.41
+- ath11k: WCN6855 hw2.0: update board-2.bin
+- ath11k: QCA2066 hw2.1: add to WLAN.HSP.1.1-03926.13-QCAHSPSWPL_V2_SILICONZ_CE-2.52297.3
+- ath11k: QCA2066 hw2.1: add board-2.bin
+- ath11k: IPQ5018 hw1.0: update to WLAN.HK.2.6.0.1-01291-QCAHKSWPL_SILICONZ-1
+- qcom: vpu: add video firmware for sa8775p
+- amdgpu: DMCUB updates for various AMDGPU ASICs
+- qcom: update path for video firmware for vpu-1/2/3.0
+- Merge https://github.com/zijun-hu/qca_btfw into qca_btfw
+- Merge tag 'rtw-fw-2024-08-08' of https://github.com/pkshih/linux-firmware into rtw89
+- QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00642
+- rtw89: 8852c: add fw format-1 v0.27.97.0
+- rtw89: 8852bt: add firmware 0.29.91.0
+- amdgpu: Update ISP FW for isp v4.1.1
+- Merge tag 'intel-2024-08-02' of https://gitlab.freedesktop.org/drm/firmware into intel-20240805
+- Merge https://github.com/zijun-hu/qca_btfw into list-20240802
+- mediatek: Update mt8195 SOF firmware
+- Merge tag 'amd-2024-08-02' of https://gitlab.freedesktop.org/drm/firmware into amd-20240802
+- amdgpu: DMCUB updates for DCN314
+- xe: First GuC release v70.29.2 for BMG
+- xe: Add GuC v70.29.2 for LNL
+- i915: Add GuC v70.29.2 for ADL-P, DG1, DG2, MTL, and TGL
+- i915: Update MTL DMC v2.22
+- i915: update MTL GSC to v102.0.10.1878
+- xe: Add BMG HuC 8.2.10
+- xe: Add GSC 104.0.0.1161 for LNL
+- xe: Add LNL HuC 9.4.13
+- i915: update DG2 HuC to v7.10.16
+- amdgpu: Update ISP FW for isp v4.1.1
+- amdgpu: Update ISP FW for isp v4.1.1
+- amdgpu: add new ISP 4.1.1 firmware
+- QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00641
+- amdgpu: update DMCUB to v0.0.227.0 for DCN35 and DCN351
+- Merge tag 'iwlwifi-fw-2024-07-25' of ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware into iwlfifi-fw-2024-07
+- Revert "iwlwifi: update ty/So/Ma firmwares for core89-58 release"
+- linux-firmware: update firmware for MT7922 WiFi device
+- linux-firmware: update firmware for MT7921 WiFi device
+- linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+- linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+- iwlwifi: add gl FW for core89-58 release
+- iwlwifi: update ty/So/Ma firmwares for core89-58 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core89-58 release
+- mediatek: Update mt8195 SOF firmware and sof-tplg
+- ASoC: tas2781: fix the license issue for tas781 firmware
+- rtl_bt: Update RTL8852B BT USB FW to 0x048F_4008
+- .gitignore: Ignore intermediate files
+- i915: Update Xe2LPD DMC to v2.21
+Resolves: RHEL-54253, RHEL-54241
+
 * Tue Jul 16 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240716-143.2
 - [Intel 9.5 FEAT] [SRF] QAT_402XX firmware update [rhel-9.4.z] (RHEL-47356)
   Changes since the last update are noted on items below, copied from
@@ -2321,7 +2399,7 @@ Resolves: RHEL-47356
 * Fri Sep 23 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160923-68.git42ad5367
 - Update to the latest upstream snapshot
 - ath10k, amdgpu, mediatek, brcm, marvell updates
- 
+
 * Tue Aug 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160816-67.git7c3dfc0b
 - Update to the latest upstream snapshot (rhbz 1367203)
 - Intel audio, rockchip, amdgpu, iwlwifi, nvidia pascal updates
@@ -2510,8 +2588,8 @@ Resolves: RHEL-47356
 
 * Mon Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
- 
-* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
+
+* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com>
 - Update to latest upstream release
 - Provide firmware for carl9170 (rhbz 866051)
 
