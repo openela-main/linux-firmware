@@ -1,12 +1,12 @@
-%global checkout 3cff7109
+%global checkout 06bad2f1
 
-%global firmware_release 124
+%global firmware_release 125
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20240827
+Version:	20241014
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -40,7 +40,7 @@ Conflicts:	microcode_ctl < 2.1-0
 # avoid upgrade errors (see bug 1589055)
 Obsoletes:	ivtv-firmware < 2:20080701-28
 
-BuildRequires: git make
+BuildRequires: git make python3
 
 %description
 This package includes firmware files required for some devices to
@@ -257,19 +257,7 @@ License:	Redistributable, no modification permitted
 Firmware for Marvell Libertas SD 8787 Network Adapter
 
 %prep
-%setup -q -n linux-firmware-%{checkout}
-%if 0
-git init .
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "nobody@fedoraproject.org"
-    git config user.name "Fedora linux-firmware packagers"
-fi
-git add .
-git commit -m init .
-
-git am %{patches}
-
-%endif
+%autosetup -S git -p1 -n linux-firmware-%{checkout}
 
 %build
 
@@ -281,8 +269,8 @@ mkdir -p $RPM_BUILD_ROOT/%{_firmwarepath}/updates
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
 mv -f amd-ucode/README %{buildroot}/%{_defaultdocdir}/%{name}/amd-ucode
 
-# copy-firmware.sh requires rdfind unless we pass --ignore-duplicates.
-make DESTDIR=%{buildroot}/ FIRMWAREDIR=%{_firmwarepath} COPYOPTS="--ignore-duplicates" install
+# install-nodedup: just "install" requires rdfind
+make DESTDIR=%{buildroot}/ FIRMWAREDIR=%{_firmwarepath} install-nodedup
 
 pushd $RPM_BUILD_ROOT/%{_firmwarepath}
 # Remove firmware shipped in separate packages already
@@ -407,6 +395,8 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-ty-a0-gf-a0*.pnvm
 %{_firmwarepath}/iwlwifi-so-a0-*.ucode
 %{_firmwarepath}/iwlwifi-so-a0-*.pnvm
+%{_firmwarepath}/iwlwifi-bz-b0-*.ucode*
+%{_firmwarepath}/iwlwifi-bz-b0-*.pnvm*
 %{_firmwarepath}/iwlwifi-gl-*.ucode
 %{_firmwarepath}/iwlwifi-gl-*.pnvm
 %{_firmwarepath}/iwlwifi-ma-*.ucode
@@ -439,6 +429,113 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %config(noreplace) %{_firmwarepath}/netronome/nic_AMDA*
 
 %changelog
+* Mon Oct 14 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20241014-125.git06bad2f1
+- Update linux-firmware to latest upstream (RHEL-62359)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- mtk_wed: add firmware for mt7988 Wireless Ethernet Dispatcher
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- ath12k: QCN9274 hw2.0: add to WLAN.WBE.1.3.1-00162-QCAHKSWPL_SILICONZ-1
+- ath12k: QCN9274 hw2.0: add board-2.bin
+- copy-firmware.sh: rename variables in symlink hanlding
+- copy-firmware.sh: remove no longer reachable test -L
+- copy-firmware.sh: remove no longer reachable test -f
+- copy-firmware.sh: call ./check_whence.py before parsing the file
+- copy-firmware.sh: warn if the destination folder is not empty
+- copy-firmware.sh: add err() helper
+- copy-firmware.sh: fix indentation
+- copy-firmware.sh: reset and consistently handle destdir
+- Revert "copy-firmware: Support additional compressor options"
+- copy-firmware.sh: flesh out and fix dedup-firmware.sh
+- Style update yaml files
+- editorconfig: add initial config file
+- check_whence.py: annotate replacement strings as raw
+- check_whence.py: LC_ALL=C sort -u the filelist
+- check_whence.py: ban link-to-a-link
+- check_whence.py: use consistent naming
+- Add a link from TAS2XXX1EB3.bin -> ti/tas2781/TAS2XXX1EB30.bin
+- tas2781: Upload dsp firmware for ASUS laptop 1EB30 & 1EB31
+- rtlwifi: Add firmware v39.0 for RTL8192DU
+- Revert "ath12k: WCN7850 hw2.0: update board-2.bin"
+- amdgpu: DMCUB DCN35 update
+- brcm: Add BCM4354 NVRAM for Jetson TX1
+- brcm: Link FriendlyElec NanoPi M4 to AP6356S nvram
+- linux-firmware: add firmware for MediaTek Bluetooth chip (MT7920)
+- linux-firmware: add firmware for MT7920
+- amdgpu: update raven firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update PSP 13.0.8 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update picasso firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update SMU 13.0.6 firmware
+- amdgpu: update SDMA 4.4.2 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update aldebaran firmware
+- qcom: update gpu firmwares for qcm6490 chipset
+- mt76: mt7996: add firmware files for mt7992 chipset
+- mt76: mt7996: add firmware files for mt7996 chipset variants
+- Merge tag 'rtw-fw-2024-09-13' of https://github.com/pkshih/linux-firmware into 8922a
+- qcom: add gpu firmwares for sa8775p chipset
+- amdgpu: update DMCUB to v0.0.233.0 DCN351
+- rtw89: 8922a: add fw format-2 v0.35.42.1
+- copy-firmware: Handle links to uncompressed files
+- WHENCE: Fix battmgr.jsn entry type
+- amdgpu: Add VPE 6.1.3 microcode
+- amdgpu: add SDMA 6.1.2 microcode
+- amdgpu: Add support for PSP 14.0.4
+- amdgpu: add GC 11.5.2 microcode
+- qcom: qcm6490: add ADSP and CDSP firmware
+- linux-firmware: Update firmware file for Intel Bluetooth Magnetor core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel Bluetooth Solar core
+- rtl_bt: Update RTL8852B BT USB FW to 0x0447_9301
+- realtek: rt1320: Add patch firmware of MCU
+- i915: Update MTL DMC v2.23
+- cirrus: cs35l56: Add firmware for Cirrus CS35L54 for some HP laptops
+- amdgpu: Revert sienna cichlid dmcub firmware update
+- Merge tag 'iwlwifi-fw-2024-09-03' of http://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware into iwlwifi-20240903
+- iwlwifi: add Bz FW for core89-58 release
+- rtl_nic: add firmware rtl8126a-3
+- linux-firmware: update firmware for MT7921 WiFi device
+- linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+- amdgpu: update DMCUB to v0.0.232.0 for DCN314 and DCN351
+- qcom: vpu: restore compatibility with kernels before 6.6
+Resolves: RHEL-62359
+
 * Tue Aug 27 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240827-124.git3cff7109
 - AMD SEV: IOMMU improperly handles certain special address leading to a loss of guest integrity (RHEL-54256)
 - AMD SEV: Incomplete system memory cleanup in SEV firmware corrupt guest private memory (RHEL-54237)
@@ -1140,7 +1237,7 @@ Resolves: rhbz#2183606
 * Fri Sep 23 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160923-68.git42ad5367
 - Update to the latest upstream snapshot
 - ath10k, amdgpu, mediatek, brcm, marvell updates
- 
+
 * Tue Aug 16 2016 Josh Boyer <jwboyer@fedoraproject.org> 20160816-67.git7c3dfc0b
 - Update to the latest upstream snapshot (rhbz 1367203)
 - Intel audio, rockchip, amdgpu, iwlwifi, nvidia pascal updates
@@ -1329,8 +1426,8 @@ Resolves: rhbz#2183606
 
 * Mon Feb 04 2013 Josh Boyer <jwboyer@redhat.com> - 20130201-0.3.git65a5163
 - Obsolete ql2[45]00-firmware packages (rhbz 906898)
- 
-* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com> 
+
+* Fri Feb 01 2013 Josh Boyer <jwboyer@redhat.com>
 - Update to latest upstream release
 - Provide firmware for carl9170 (rhbz 866051)
 
