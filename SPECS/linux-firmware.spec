@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global firmware_release 143.3
+%global firmware_release 146
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
@@ -458,9 +458,9 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/netronome/*
 
 %changelog
-* Thu Sep 05 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240905-143.3
-- AMD SEV: IOMMU improperly handles certain special address leading to a loss of guest integrity (RHEL-54253)
-- AMD SEV: Incomplete system memory cleanup in SEV firmware corrupt guest private memory (RHEL-54241)
+* Thu Sep 05 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240905-146
+- AMD SEV: IOMMU improperly handles certain special address leading to a loss of guest integrity (RHEL-54252)
+- AMD SEV: Incomplete system memory cleanup in SEV firmware corrupt guest private memory (RHEL-54240)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - cirrus: cs35l56: Add firmware for Cirrus CS35L54 for some HP laptops
@@ -532,10 +532,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 - rtl_bt: Update RTL8852B BT USB FW to 0x048F_4008
 - .gitignore: Ignore intermediate files
 - i915: Update Xe2LPD DMC to v2.21
-Resolves: RHEL-54253, RHEL-54241
+Resolves: RHEL-54252, RHEL-54240
 
-* Tue Jul 16 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240716-143.2
-- [Intel 9.5 FEAT] [SRF] QAT_402XX firmware update [rhel-9.4.z] (RHEL-47356)
+* Tue Jul 16 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240716-145
+- [Intel 9.5 FEAT] [SRF] QAT_402XX firmware update (RHEL-47355)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - qcom: move signed x1e80100 signed firmware to the SoC subdir
@@ -678,10 +678,12 @@ Resolves: RHEL-54253, RHEL-54241
 - amdgpu: update renoir firmware
 - amdgpu: update navi12 firmware
 - amdgpu: update aldebaran firmware
-Resolves: RHEL-47356
+Resolves: RHEL-47355
 
-* Mon Jun 03 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240603-143.1
-- CVE-2023-31346 AMD SEV: reserved fields in guest message responses may not be zero initialized [rhel-9.4.z] (RHEL-35595)
+* Mon Jun 03 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240603-144
+- [AMD 9.3 FEAT]: MI300 GPU firmware (RHEL-10056)
+- CVE-2023-31346 linux-firmware: kernel: Reserved fields in guest message responses may not be zero initialized [rhel-9.4.z] (RHEL-35597)
+- linux-firmware ships encrypted zip files (named *.ncf) (RHEL-32145)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - amdgpu: add support for PSP 14.0.1
