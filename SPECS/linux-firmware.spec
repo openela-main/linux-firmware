@@ -1,12 +1,12 @@
-%global checkout 710a336b
+%global checkout 9f8e520f
 
-%global firmware_release 129
+%global firmware_release 130
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250325
+Version:	20250515
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -436,6 +436,132 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %config(noreplace) %{_firmwarepath}/netronome/nic_AMDA*
 
 %changelog
+* Tue Mar 25 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250515-130.git9f8e520f
+- Update linux-firmware to latest upstream (RHEL-91590)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- intel_vpu: Update NPU firmware
+- intel: avs: Update topology file for Digital Microphone Array
+- amdgpu: updates for dcn 3.20 and dcn 4.01 firmware to 0.1.10.0
+- linux-firmware: Amphion: Update vpu firmware
+- amd_pmf: Update AMD PMF TA Firmware to v3.1
+- amdgpu: update dcn 4.01 firmware to 0.1.8.0
+- qcom: Add link for SM8350 GPU firmware
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some ASUS laptops
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20250425073330
+- rtw89: 8852c: add tables for dynamic antenna TXPWR
+- rtw89: 8922a: update fw to v0.35.71.0
+- brcm: Add NVRAM file for Radxa Rock Pi X mini PC
+- i915: Update Xe3LPD DMC to v2.23
+- rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B
+- ath11k: WCN6855 hw2.0: update board-2.bin
+- ath11k: IPQ5018 hw1.0: update to WLAN.HK.2.6.0.1-01300-QCAHKSWPL_SILICONZ-1
+- ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3
+- ath12k: QCN9274 hw2.0: update board-2.bin
+- qcom: vpu: update video firmware binary for SA8775p
+- iwlwifi: add Bz/gl FW for core95-82 release
+- iwlwifi: update ty/So/Ma firmwares for core95-82 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core95-82 release
+- iwlwifi: add Bz-hr FW for core93-123 release
+- qcom: add QUPv3 firmware for QCS9100 platform
+- ASoC: tas2781: Swap channel for SPI projects.
+- bmi260: Add BMI260 IMU initial configuration data file
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x1881_BA06
+- rtw89: 8922a: update element RF TXPWR to R40
+- rtw89: 8852c: update element RF TXPWR to R78
+- rtw89: 8852c: add fw v0.27.125.0 with format version 2
+- Revert "rtw89: 8852c: update fw to v0.27.125.0"
+- qcom: vpu: add video firmware binary for qcm6490
+- contrib: process_linux_firmware: set user agent
+- amdgpu: update vcn 4.0.5 firmware
+- amdgpu: update psp 14.0.0 firmware
+- amdgpu: update vcn 4.0.2 firmware
+- amdgpu: update psp 13.0.4 firmware
+- amdgpu: update gc 11.0.1 firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update psp 14.0.4 firmware
+- amdgpu: update gc 11.5.2 firmware
+- amdgpu: update vcn 5.0.0 firmware
+- amdgpu: update smu 14.0.3 firmware
+- amdgpu: update psp 14.0.3 firmware
+- amdgpu: update gc 12.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update smu 14.0.2 firmware
+- amdgpu: update psp 14.0.2 firmware
+- amdgpu: update gc 12.0.0 firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vcn 4.0.4 firmware
+- amdgpu: update smu 13.0.7 firmware
+- amdgpu: update psp 13.0.7 firmware
+- amdgpu: update gc 11.0.2 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update psp 13.0.5 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update psp 13.0.10 firmware
+- amdgpu: update gc 11.0.3 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update picasso firmware
+- amdgpu: update vcn 4.0.0 firmware
+- amdgpu: update psp 13.0.0 firmware
+- amdgpu: update gc 11.0.0 firmware
+- amdgpu: update psp 13.0.14 firmware
+- amdgpu: update gc 9.4.4 firmware
+- amdgpu: update arcturus firmware
+- amdgpu: update psp 13.0.6 firmware
+- amdgpu: update gc 9.4.3 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update psp 13.0.8 firmware
+- amdgpu: update psp 14.0.1 firmware
+- amdgpu: update gc 11.5.1 firmware
+- amdgpu: update psp 13.0.11 firmware
+- amdgpu: update gc 11.0.4 firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update aldebaran firmware
+- amdgpu: update dcn 4.01 frmware to 0.1.6.0
+- intel: ish: Update license file for ISH
+- intel: avs: Update topology file for I2S Analog Devices 4567
+- intel: avs: Update topology file for I2S Realtek 5663
+- intel: avs: Update topology file for I2S Realtek 5640
+- intel: avs: Update topology file for I2S Realtek 5514
+- intel: avs: Update topology file for I2S Realtek 298
+- intel: avs: Update topology file for I2S Realtek 286
+- intel: avs: Update topology file for I2S Realtek 274
+- intel: avs: Update topology file for I2S Nuvoton 8825
+- intel: avs: Update topology file for I2S Maxim 98927
+- intel: avs: Update topology file for I2S Maxim 98373
+- intel: avs: Update topology file for I2S Maxim 98357a
+- intel: avs: Update topology file for HDAudio codecs
+- intel: avs: Update topology file for HDMI codecs
+- intel: avs: Update topology file for Digital Microphone Array
+- intel: avs: Update topology file for I2S Dialog 7219
+- xe: Update GUC to v70.44.1 for BMG and LNL
+- i915: Update GUC to v70.44.1 for i915 platforms
+- qcom:x1e80100: Iris Support for Lenovo T14s G6 Qualcomm platform
+- qcom:x1e80100: Support for Lenovo Yoga Slim 7 Snapdragon platform
+- Mellanox: Add new mlxsw_spectrum firmware xx.2014.4012
+- linux-firmware: add firmware for Aeonsemi AS21x1x 1G/2.5G/5G/10G Ethernet Phy
+- QCA: Add 8 bluetooth nvm files for WCN785x btusb
+- QCA: Update WCN785x btusb firmware to 2.0.0-00790-3
+- qcom: update firmware binary for SM8250
+- mediatek: Add new mt8195 SOF firmware
+- mediatek: Add new mt8188 SOF firmware
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x17E9_16ED
+- Revert "rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6"
+- intel_vpu: Update NPU firmware
+- cirrus: cs35l56: Correct filenames of SSID 103c8e1b and 103c8e1c
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6
+- amdgpu: update dcn 3.5 and dcn 3.5.1 firmware to 9.0.27.0
+- amdgpu: update dcn 3.1.4 firmware to 8.0.78.0
+Resolves: RHEL-91590
+
 * Tue Mar 25 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250325-129.git710a336b
 - Update linux-firmware to latest upstream (RHEL-84781)
   Changes since the last update are noted on items below, copied from
