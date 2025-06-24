@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 146.5
+%global firmware_release 151.1
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250415
+Version:	20250513
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -461,10 +461,97 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/netronome/*
 
 %changelog
-* Tue Apr 15 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250415-146.5
-- Update linux-firmware to latest upstream (RHEL-87430)
-  Changes since the last update are noted on items below, copied from
-  the git changelog of upstream linux-firmware repository.
+* Tue May 13 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250513-151.1
+- Update linux-firmware to latest upstream (RHEL-91077)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- intel_vpu: Update NPU firmware
+- intel: avs: Update topology file for Digital Microphone Array
+- amdgpu: updates for dcn 3.20 and dcn 4.01 firmware to 0.1.10.0
+- linux-firmware: Amphion: Update vpu firmware
+- amd_pmf: Update AMD PMF TA Firmware to v3.1
+- amdgpu: update dcn 4.01 firmware to 0.1.8.0
+- qcom: Add link for SM8350 GPU firmware
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some ASUS laptops
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20250425073330
+- rtw89: 8852c: add tables for dynamic antenna TXPWR
+- rtw89: 8922a: update fw to v0.35.71.0
+- brcm: Add NVRAM file for Radxa Rock Pi X mini PC
+- i915: Update Xe3LPD DMC to v2.23
+- rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B
+- ath11k: WCN6855 hw2.0: update board-2.bin
+- ath11k: IPQ5018 hw1.0: update to WLAN.HK.2.6.0.1-01300-QCAHKSWPL_SILICONZ-1
+- ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3
+- ath12k: QCN9274 hw2.0: update board-2.bin
+- qcom: vpu: update video firmware binary for SA8775p
+- iwlwifi: add Bz/gl FW for core95-82 release
+- iwlwifi: update ty/So/Ma firmwares for core95-82 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core95-82 release
+- iwlwifi: add Bz-hr FW for core93-123 release
+- qcom: add QUPv3 firmware for QCS9100 platform
+- ASoC: tas2781: Swap channel for SPI projects.
+- bmi260: Add BMI260 IMU initial configuration data file
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x1881_BA06
+- rtw89: 8922a: update element RF TXPWR to R40
+- rtw89: 8852c: update element RF TXPWR to R78
+- rtw89: 8852c: add fw v0.27.125.0 with format version 2
+- Revert "rtw89: 8852c: update fw to v0.27.125.0"
+- qcom: vpu: add video firmware binary for qcm6490
+- contrib: process_linux_firmware: set user agent
+- amdgpu: update vcn 4.0.5 firmware
+- amdgpu: update psp 14.0.0 firmware
+- amdgpu: update vcn 4.0.2 firmware
+- amdgpu: update psp 13.0.4 firmware
+- amdgpu: update gc 11.0.1 firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update psp 14.0.4 firmware
+- amdgpu: update gc 11.5.2 firmware
+- amdgpu: update vcn 5.0.0 firmware
+- amdgpu: update smu 14.0.3 firmware
+- amdgpu: update psp 14.0.3 firmware
+- amdgpu: update gc 12.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update smu 14.0.2 firmware
+- amdgpu: update psp 14.0.2 firmware
+- amdgpu: update gc 12.0.0 firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vcn 4.0.4 firmware
+- amdgpu: update smu 13.0.7 firmware
+- amdgpu: update psp 13.0.7 firmware
+- amdgpu: update gc 11.0.2 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update psp 13.0.5 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update psp 13.0.10 firmware
+- amdgpu: update gc 11.0.3 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update picasso firmware
+- amdgpu: update vcn 4.0.0 firmware
+- amdgpu: update psp 13.0.0 firmware
+- amdgpu: update gc 11.0.0 firmware
+- amdgpu: update psp 13.0.14 firmware
+- amdgpu: update gc 9.4.4 firmware
+- amdgpu: update arcturus firmware
+- amdgpu: update psp 13.0.6 firmware
+- amdgpu: update gc 9.4.3 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update psp 13.0.8 firmware
+- amdgpu: update psp 14.0.1 firmware
+- amdgpu: update gc 11.5.1 firmware
+- amdgpu: update psp 13.0.11 firmware
+- amdgpu: update gc 11.0.4 firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update aldebaran firmware
+- amdgpu: update dcn 4.01 frmware to 0.1.6.0
+- intel: ish: Update license file for ISH
 - intel: avs: Update topology file for I2S Analog Devices 4567
 - intel: avs: Update topology file for I2S Realtek 5663
 - intel: avs: Update topology file for I2S Realtek 5640
@@ -511,6 +598,12 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 - qcom: Add Audio firmware for Lenovo Slim 7x
 - qcom: Add Audio firmware for Lenovo T14s
 - amdgpu: DMCUB updates for various ASICs
+Resolves: RHEL-91077
+
+* Fri Mar 14 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250314-151
+- accel: ivpu: Update firmware for NPU (RHEL-38587)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
 - rtw88: Add firmware v33.6.0 for RTL8814AE/RTL8814AU
 - rtw89: 8922a: update fw to v0.35.64.0
 - rtw89: 8922a: update fw to v0.35.63.0
@@ -601,10 +694,10 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 - linux-firmware: update firmware for en8811h 2.5G ethernet phy
 - i915: Update Xe3LPD DMC to v2.17
 - ASoC: tas2781: Change regbin firmwares for single device
-Resolves: RHEL-87430
+Resolves: RHEL-38587
 
-* Mon Feb 17 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250212-146.4
-- MI325 GPU firmware (RHEL-78408)
+* Wed Feb 12 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250212-150
+- Missing firmware for the enablement of TI AMP TAS2781 SPI driver (RHEL-78576)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - i915: Update Xe2LPD DMC to v2.28
@@ -690,10 +783,10 @@ Resolves: RHEL-87430
 - linux-firmware: Update firmware (v10) for mt7988 internal
 - iwlwifi: add Bz FW for core90-93 release
 - linux-firmware: wilc3000: add firmware for WILC3000 WiFi device
-Resolves: RHEL-78408
+Resolves: RHEL-78576
 
-* Tue Jan 14 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250114-146.3
-- Update linux-firmware to latest upstream (RHEL-73852)
+* Tue Jan 14 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250114-149
+- Update linux-firmware to latest upstream (RHEL-73843)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - rtw89: 8852b: update fw to v0.29.29.8
@@ -884,10 +977,10 @@ Resolves: RHEL-78408
 - amdgpu: update DMCUB to v9.0.10.0 for DCN314
 - amdgpu: update DMCUB to v9.0.10.0 for DCN351
 - linux-firmware: Update AMD cpu microcode
-Resolves: RHEL-73852
+Resolves: RHEL-73843
 
-* Thu Nov 21 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20241121-146.2
-- Update linux-firmware to latest upstream (RHEL-68435)
+* Thu Nov 21 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20241121-148
+- Update linux-firmware to latest upstream (RHEL-68406)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - xe: Update GUC to v70.36.0 for BMG, LNL
@@ -930,10 +1023,10 @@ Resolves: RHEL-73852
 - cnm: update chips&media wave521c firmware.
 - linux-firmware: Add firmware for Cirrus CS35L41
 - linux-firmware: Update firmware file for Intel BlazarU core
-Resolves: RHEL-68435
+Resolves: RHEL-68406
 
-* Mon Oct 21 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20241021-146.1
-- Update linux-firmware to latest upstream (RHEL-63646)
+* Mon Oct 21 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20241021-147
+- Update linux-firmware to latest upstream (RHEL-63635)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - Makefile: error out of 'install' if COPYOPTS is set
@@ -1047,7 +1140,7 @@ Resolves: RHEL-68435
 - rtl_bt: Update RTL8852B BT USB FW to 0x0447_9301
 - realtek: rt1320: Add patch firmware of MCU
 - i915: Update MTL DMC v2.23
-Resolves: RHEL-63646
+Resolves: RHEL-63635
 
 * Thu Sep 05 2024 Denys Vlasenko <dvlasenk@redhat.com> - 20240905-146
 - AMD SEV: IOMMU improperly handles certain special address leading to a loss of guest integrity (RHEL-54252)
