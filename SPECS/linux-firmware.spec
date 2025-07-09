@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 151.1
+%global firmware_release 151.2
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250513
+Version:	20250604
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -336,7 +336,7 @@ sed -i -e '/^iwlwifi/d' \
 	-i -e '/^mrvl\/sd8787/d' \
 	-i -e '/^liquidio/d' \
 	-i -e '/^netronome/d' \
-	linux-firmware.files
+	linux-firmware.{files,dirs}
 sed -i -e 's!^!/usr/lib/firmware/!' linux-firmware.{files,dirs}
 sed -i -e 's/^/"/;s/$/"/' linux-firmware.files
 sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
@@ -460,7 +460,107 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %dir %{_firmwarepath}/netronome
 %{_firmwarepath}/netronome/*
 
+# workaround for directory->symlink changes
+%pretrans -n linux-firmware -p <lua>
+path = "/usr/lib/firmware/nvidia/ad103"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad104"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad106"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad107"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+
 %changelog
+* Wed Jun 04 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250604-151.2
+- Update linux-firmware to latest upstream (RHEL-94292)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- xe: Update GUC to v70.45.2 for BMG, LNL
+- i915: Update GUC to v70.45.2 for DG2
+- xe: Update LNL GSC to v104.0.5.1429
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add QUPv3 firmware for QCS8300 platform
+- Intel IPU7: Add firmware binary files
+- ice: update wireless_edge package to 1.3.23.0
+- ice: update comms package to 1.3.55.0
+- ice: update package to 1.3.43.0
+- linux-firmware: Update firmware file for Intel Pulsar core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel Quasar core
+- linux-firmware: Update firmware file for Intel Solar core
+- linux-firmware: Update firmware file for Intel Magnetar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- iwlwifi: add Bz/gl FW for core96-76 release
+- iwlwifi: update ty/So/Ma firmwares for core96-76 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core96-76 release
+- iwlwifi: update firmwares for 8000 series
+- iwlwifi: update 7265D firmware
+- mediatek MT7925: update bluetooth firmware to 20250526153203
+- linux-firmware: update firmware for MT7925 WiFi device
+- qcom: sc8280xp: FW blob updates for X13s
+- brcm: Add symlinks for Khadas VIM SDIO wifi config to AW-CM256SM.txt
+- ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284.1-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3
+- cirrus: cs35l41: Fix firmware links for several ASUS laptops
+- cirrus: cs35l41: Add Firmware for various HP Agusta Laptops using CS35L41 HDA
+- Adjust QUPv3 driver name
+- cnm: Add Chips&Media wave633c firmware for NXP i.MX9
+- qcom: add QUPv3 firmware for QCM6490 platform
+- mediatek: Add mt8196 VCP firmware
+- cirrus: cs35l41: Add Firmware for various ACER Laptops using CS35L41 HDA
+- nvidia: add GSP-RM version 570.144 firmware images
+- amdgpu: DMCUB updates for various ASICs
+- powervr: add firmware for Imagination Technologies BXS-4-64 GPU
+- rtl_bt: Update RTL8822C BT USB and UART firmware to 0x7C20
+- brcmfmac: Add a couple of NanoPi devices
+- rtl_nic: add firmware rtl8127a-1
+- cnm: update chips&media wave521c firmware.
+Resolves: RHEL-94292
+
 * Tue May 13 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250513-151.1
 - Update linux-firmware to latest upstream (RHEL-91077)
   Changes since the last update are noted on items below, copied from
