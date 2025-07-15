@@ -1,12 +1,12 @@
-%global checkout 9f8e520f
+%global checkout b05fabcd
 
-%global firmware_release 130
+%global firmware_release 131
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250515
+Version:	20250626
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -320,7 +320,7 @@ sed -i -e '/^iwlwifi/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
 	-i -e '/^netronome\/nic_AMDA/d' \
-	linux-firmware.files
+	linux-firmware.{files,dirs}
 sed -i -e 's!^!/usr/lib/firmware/!' linux-firmware.{files,dirs}
 sed -i -e 's/^/"/;s/$/"/' linux-firmware.files
 sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
@@ -435,7 +435,191 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %license WHENCE LICENCE.*
 %config(noreplace) %{_firmwarepath}/netronome/nic_AMDA*
 
+# workaround for directory->symlink changes
+%pretrans -n linux-firmware -p <lua>
+path = "/usr/lib/firmware/nvidia/ad103"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad104"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad106"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+path = "/usr/lib/firmware/nvidia/ad107"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+
 %changelog
+* Tue Mar 25 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250626-131.gitb05fabcd
+- Update linux-firmware to latest upstream (RHEL-100433)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom: venus-5.4: add the firmware binary for qcs615
+- Revert "qcom: Add sdx61 Foxconn vendor firmware image file"
+- amdgpu: update dmcub fw for dcn401
+- qcom: Add sdx61 Foxconn vendor firmware image file
+- brcm: Fix symlinks for Khadas VIM SDIO wifi config
+- amdgpu: update renoir firmware
+- amdgpu: update vcn 5.0.0 firmware
+- amdgpu: update smu 14.0.3 firmware
+- amdgpu: update sdma 7.0.1 firmware
+- amdgpu: update psp 14.0.3 firmware
+- amdgpu: update gc 12.0.1 firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update psp 14.0.4 firmware
+- amdgpu: update gc 11.5.2 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: add raven2 ip discovery firmware
+- amdgpu: update smu 14.0.2 firmware
+- amdgpu: update sdma 7.0.0 firmware
+- amdgpu: update psp 14.0.2 firmware
+- amdgpu: update gc 12.0.0 firmware
+- amdgpu: update vcn 4.0.6 firmware
+- amdgpu: update psp 14.0.1 firmware
+- amdgpu: update gc 11.5.1 firmware
+- amdgpu: update psp 13.0.11 firmware
+- amdgpu: update gc 11.0.4 firmware
+- amdgpu: add picasso ip discovery firmware
+- amdgpu: add raven ip discovery firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update smu 13.0.7 firmware
+- amdgpu: update vcn 4.0.4 firmware
+- amdgpu: update psp 13.0.7 firmware
+- amdgpu: update gc 11.0.2 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update gc 10.3.6 firmware
+- amdgpu: update smu 13.0.10 firmware
+- amdgpu: update psp 13.0.10 firmware
+- amdgpu: update gc 11.0.3 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update navi10 firmware
+- amdgpu: add smu 13.0.0 kicker firmware
+- amdgpu: add psp 13.0.0 kicker firmware
+- amdgpu: add gc 11.0.0 kicker firmware
+- amdgpu: add vcn 5.0.1 firmware
+- amdgpu: add sdma 4.4.4 firmware
+- amdgpu: add psp 13.0.12 firmware
+- amdgpu: add gc 9.5.0 firmware
+- amdgpu: add arcturus IP discovery firmware
+- amdgpu: update vcn 4.0.0 firmware
+- amdgpu: update smu 13.0.0 firmware
+- amdgpu: update psp 13.0.0 firmware
+- amdgpu: update gc 11.0.0 firmware
+- amdgpu: update psp 13.0.14 firmware
+- amdgpu: update gc 9.4.4 firmware
+- amdgpu: update psp 13.0.6 firmware
+- amdgpu: update gc 9.4.3 firmware
+- amdgpu: update beige_goby firmware
+- amdgpu: update vcn 4.0.5 firmware
+- amdgpu: update gc 11.5.0 firmware
+- amdgpu: update vcn 4.0.2 firmware
+- amdgpu: update gc 11.0.1 firmware
+- amdgpu: update dimgrey_cavefish firmware
+- amdgpu: update aldebaran firmware
+- WHENCE: fix subtly incorrect licensing
+- amdgpu: update dmcub fw for dcn32 and dcn401
+- mediatek: Update mt8186 SCP firmware
+- amdgpu: Update DMCUB fw for DCN401 & DCN315
+- WHENCE: unify Driver statements
+- qcom: add gpu firmwares for X1P42100 chipset
+- QCA: Update WCN785x btusb firmware to 2.0.0-00799-5
+- rtl_nic: update firmware of RTL8153A
+- qcom: sc8280xp: Updated power FW for X13s
+- linux-firmware: update firmware for MT7986
+- linux-firmware: update firmware for MT7981
+- linux-firmware: update firmware for MT7916
+- cirrus: cs35l41: Add Firmware for ASUS NUC using CS35L41
+- Revert "iwlwifi: add Bz/gl FW for core96-76 release"
+- amdgpu: DMCUB updates for various ASICs
+- mediatek MT7922: update bluetooth firmware to 20250523103438
+- mediatek MT7921: update bluetooth firmware to 20250523111333
+- linux-firmware: update firmware for MT7922 WiFi device
+- linux-firmware: update firmware for MT7921 WiFi device
+- xe: Update GUC to v70.45.2 for BMG, LNL
+- i915: Update GUC to v70.45.2 for DG2
+- xe: Update LNL GSC to v104.0.5.1429
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add QUPv3 firmware for QCS8300 platform
+- Intel IPU7: Add firmware binary files
+- ice: update wireless_edge package to 1.3.23.0
+- ice: update comms package to 1.3.55.0
+- ice: update package to 1.3.43.0
+- linux-firmware: Update firmware file for Intel Pulsar core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel Quasar core
+- linux-firmware: Update firmware file for Intel Solar core
+- linux-firmware: Update firmware file for Intel Magnetar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- iwlwifi: add Bz/gl FW for core96-76 release
+- iwlwifi: update ty/So/Ma firmwares for core96-76 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core96-76 release
+- iwlwifi: update firmwares for 8000 series
+- iwlwifi: update 7265D firmware
+- mediatek MT7925: update bluetooth firmware to 20250526153203
+- linux-firmware: update firmware for MT7925 WiFi device
+- qcom: sc8280xp: FW blob updates for X13s
+- brcm: Add symlinks for Khadas VIM SDIO wifi config to AW-CM256SM.txt
+- ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284.1-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3
+- cirrus: cs35l41: Fix firmware links for several ASUS laptops
+- cirrus: cs35l41: Add Firmware for various HP Agusta Laptops using CS35L41 HDA
+- Adjust QUPv3 driver name
+- cnm: Add Chips&Media wave633c firmware for NXP i.MX9
+- qcom: add QUPv3 firmware for QCM6490 platform
+- mediatek: Add mt8196 VCP firmware
+- cirrus: cs35l41: Add Firmware for various ACER Laptops using CS35L41 HDA
+- nvidia: add GSP-RM version 570.144 firmware images
+- amdgpu: DMCUB updates for various ASICs
+- powervr: add firmware for Imagination Technologies BXS-4-64 GPU
+- rtl_bt: Update RTL8822C BT USB and UART firmware to 0x7C20
+- brcmfmac: Add a couple of NanoPi devices
+- rtl_nic: add firmware rtl8127a-1
+- cnm: update chips&media wave521c firmware.
+Resolves: RHEL-100433
+
 * Tue Mar 25 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250515-130.git9f8e520f
 - Update linux-firmware to latest upstream (RHEL-91590)
   Changes since the last update are noted on items below, copied from
