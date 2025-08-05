@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 151.2
+%global firmware_release 151.3
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250604
+Version:	20250716
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -516,6 +516,128 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Wed Jul 16 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250716-151.3
+- Update linux-firmware to latest upstream (RHEL-103993)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- rtw89: 8852b: update fw to v0.29.128.0
+- rtw89: 8852bt: update fw to v0.29.127.0
+- rtw89: 8922a: add regd fw element with version R72-R6
+- rtw89: 8852c: add regd fw element with version R72-R57
+- rtw89: 8922a: update BB parameter V49
+- qcom: Update gpu firmwares of QCS615 chipset
+- linux-firmware: Update firmware file for Intel Solar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- xe: Add fan_control v203.0.0.0 for BMG
+- linux-firmware: Update AMD cpu microcode
+- amdgpu: Add DCN 3.6
+- amdgpu: Add PSP 14.0.5
+- amdgpu: Add SDMA 6.1.3
+- amdgpu: Add GC 11.5.3
+- mediatek MT7921: update bluetooth firmware to 20250625154126
+- qcom/adreno: document firmware revisions
+- qcom/adreno: move A610 and A702 ZAP files to Adreno driver section
+- qcom: Add sdx61 Foxconn vendor firmware image file
+- Revert "linux-firmware: Update firmware file for Intel Pulsar core"
+- qcom/adreno: sort entries in WHENCE
+- xe: First HuC release for Pantherlake
+- xe: First GuC release for Pantherlake
+- linux-firmware: update firmware for MT7921 WiFi device
+- rtw89: 8922a: update fw to v0.35.80.0
+- rtw89: 8852c: update fw to v0.27.129.1
+- rtw89: 8852c: update fw to v0.27.128.0
+- WHENCE: extract license texts
+- WHENCE: expand the advansys license statement
+- WHENCE: some older AMD drivers are MIT licensed
+- qcom: update firmware binary for SM8550
+- amdgpu: DMCUB updates for DCN401
+- qcom: venus-5.4: add the firmware binary for qcs615
+- Revert "qcom: Add sdx61 Foxconn vendor firmware image file"
+- amdgpu: update dmcub fw for dcn401
+- qcom: Add sdx61 Foxconn vendor firmware image file
+- brcm: Fix symlinks for Khadas VIM SDIO wifi config
+- amdgpu: update renoir firmware
+- amdgpu: update vcn 5.0.0 firmware
+- amdgpu: update smu 14.0.3 firmware
+- amdgpu: update sdma 7.0.1 firmware
+- amdgpu: update psp 14.0.3 firmware
+- amdgpu: update gc 12.0.1 firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update psp 14.0.4 firmware
+- amdgpu: update gc 11.5.2 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: add raven2 ip discovery firmware
+- amdgpu: update smu 14.0.2 firmware
+- amdgpu: update sdma 7.0.0 firmware
+- amdgpu: update psp 14.0.2 firmware
+- amdgpu: update gc 12.0.0 firmware
+- amdgpu: update vcn 4.0.6 firmware
+- amdgpu: update psp 14.0.1 firmware
+- amdgpu: update gc 11.5.1 firmware
+- amdgpu: update psp 13.0.11 firmware
+- amdgpu: update gc 11.0.4 firmware
+- amdgpu: add picasso ip discovery firmware
+- amdgpu: add raven ip discovery firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update smu 13.0.7 firmware
+- amdgpu: update vcn 4.0.4 firmware
+- amdgpu: update psp 13.0.7 firmware
+- amdgpu: update gc 11.0.2 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update gc 10.3.6 firmware
+- amdgpu: update smu 13.0.10 firmware
+- amdgpu: update psp 13.0.10 firmware
+- amdgpu: update gc 11.0.3 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update navi10 firmware
+- amdgpu: add smu 13.0.0 kicker firmware
+- amdgpu: add psp 13.0.0 kicker firmware
+- amdgpu: add gc 11.0.0 kicker firmware
+- amdgpu: add vcn 5.0.1 firmware
+- amdgpu: add sdma 4.4.4 firmware
+- amdgpu: add psp 13.0.12 firmware
+- amdgpu: add gc 9.5.0 firmware
+- amdgpu: add arcturus IP discovery firmware
+- amdgpu: update vcn 4.0.0 firmware
+- amdgpu: update smu 13.0.0 firmware
+- amdgpu: update psp 13.0.0 firmware
+- amdgpu: update gc 11.0.0 firmware
+- amdgpu: update psp 13.0.14 firmware
+- amdgpu: update gc 9.4.4 firmware
+- amdgpu: update psp 13.0.6 firmware
+- amdgpu: update gc 9.4.3 firmware
+- amdgpu: update beige_goby firmware
+- amdgpu: update vcn 4.0.5 firmware
+- amdgpu: update gc 11.5.0 firmware
+- amdgpu: update vcn 4.0.2 firmware
+- amdgpu: update gc 11.0.1 firmware
+- amdgpu: update dimgrey_cavefish firmware
+- amdgpu: update aldebaran firmware
+- WHENCE: fix subtly incorrect licensing
+- amdgpu: update dmcub fw for dcn32 and dcn401
+- mediatek: Update mt8186 SCP firmware
+- amdgpu: Update DMCUB fw for DCN401 & DCN315
+- WHENCE: unify Driver statements
+- qcom: add gpu firmwares for X1P42100 chipset
+- QCA: Update WCN785x btusb firmware to 2.0.0-00799-5
+- rtl_nic: update firmware of RTL8153A
+- qcom: sc8280xp: Updated power FW for X13s
+- linux-firmware: update firmware for MT7986
+- linux-firmware: update firmware for MT7981
+- linux-firmware: update firmware for MT7916
+- cirrus: cs35l41: Add Firmware for ASUS NUC using CS35L41
+- Revert "iwlwifi: add Bz/gl FW for core96-76 release"
+- amdgpu: DMCUB updates for various ASICs
+- mediatek MT7922: update bluetooth firmware to 20250523103438
+- mediatek MT7921: update bluetooth firmware to 20250523111333
+- linux-firmware: update firmware for MT7922 WiFi device
+- linux-firmware: update firmware for MT7921 WiFi device
+Resolves: RHEL-103993
+
 * Wed Jun 04 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250604-151.2
 - Update linux-firmware to latest upstream (RHEL-94292)
   Changes since the last update are noted on items below, copied from
