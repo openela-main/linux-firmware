@@ -1,12 +1,12 @@
-%global checkout b05fabcd
+%global checkout 37b63dc3
 
-%global firmware_release 131
+%global firmware_release 132
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250626
+Version:	20250805
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -491,6 +491,64 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Aug  5 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250805-132.git37b63dc3
+- Update linux-firmware to latest upstream (RHEL-107488)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom: Add QDU100 firmware image files required for booting.
+- linux-firmware: Add firmware for airoha-npu driver
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20250721233113
+- qcom: Update DSP firmware for qcm6490 platform
+- qcom: update Venus firmware file for v6.0
+- i915: Xe3LPD DMC v2.29
+- linux-firmware: Update AMD cpu microcode
+- qcom: Add QCS6490 symlink for QUPv3 firmware
+- qcom: Add firmware binary for SM8750.
+- amdgpu: update dmcub fw for dcn314
+- cirrus: cs35l41: Add Firmware for various ASUS commercial Laptops using CS35L41 HDA
+- cirrus: cs35l41: Update Firmware for Dell Oasis
+- cirrus: cs35l56: Add firmware for Cirrus CS35L56 for various Dell laptops
+- qcom: Add Audio topology for QCS6490 RB3Gen2
+- intel_vpu: Update NPU firmware
+- amdgpu: update dmcub fw for various DCN version
+- WHENCE: extract more license statements
+- WHENCE: clarify io_ti origin
+- amdgpu: Update GC 11.5.1 microcode
+- rtw89: 8852b: update fw to v0.29.128.0
+- rtw89: 8852bt: update fw to v0.29.127.0
+- rtw89: 8922a: add regd fw element with version R72-R6
+- rtw89: 8852c: add regd fw element with version R72-R57
+- rtw89: 8922a: update BB parameter V49
+- qcom: Update gpu firmwares of QCS615 chipset
+- linux-firmware: Update firmware file for Intel Solar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- xe: Add fan_control v203.0.0.0 for BMG
+- linux-firmware: Update AMD cpu microcode
+- amdgpu: Add DCN 3.6
+- amdgpu: Add PSP 14.0.5
+- amdgpu: Add SDMA 6.1.3
+- amdgpu: Add GC 11.5.3
+- mediatek MT7921: update bluetooth firmware to 20250625154126
+- qcom/adreno: document firmware revisions
+- qcom/adreno: move A610 and A702 ZAP files to Adreno driver section
+- qcom: Add sdx61 Foxconn vendor firmware image file
+- Revert "linux-firmware: Update firmware file for Intel Pulsar core"
+- qcom/adreno: sort entries in WHENCE
+- xe: First HuC release for Pantherlake
+- xe: First GuC release for Pantherlake
+- linux-firmware: update firmware for MT7921 WiFi device
+- rtw89: 8922a: update fw to v0.35.80.0
+- rtw89: 8852c: update fw to v0.27.129.1
+- rtw89: 8852c: update fw to v0.27.128.0
+- WHENCE: extract license texts
+- WHENCE: expand the advansys license statement
+- WHENCE: some older AMD drivers are MIT licensed
+- qcom: update firmware binary for SM8550
+- amdgpu: DMCUB updates for DCN401
+Resolves: RHEL-107488
+
 * Tue Mar 25 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250626-131.gitb05fabcd
 - Update linux-firmware to latest upstream (RHEL-100433)
   Changes since the last update are noted on items below, copied from
