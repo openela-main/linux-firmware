@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 151.3
+%global firmware_release 151.4
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250716
+Version:	20250812
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -516,6 +516,109 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Aug 12 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250812-151.4
+- Update linux-firmware to latest upstream (RHEL-108919)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- amdgpu: DMCUB updates for various ASICs
+- panthor: Add firmware for more Mali GPUs
+- amdgpu: update renoir firmware
+- amdgpu: add SMU 14.0.3 kicker firmware
+- amdgpu: add PSP 14.0.3 firmware
+- amdgpu: add GC 12.0.1 kicker firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update SDMA 6.1.2 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update SDMA 7.0.1 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update SDMA 7.0.0 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update SDMA 6.0.2 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update PSP 13.0.0 kicker firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update vpe 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update SDMA 6.1.1 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update PSP 13.0.8 firmware
+- amdgpu: update GC 10.3.7 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update SDMA 6.0.1 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update dimgrey_cavefish firmware
+- amdgpu: update aldebaran firmware
+- qca: Update Bluetooth WCN6750 1.1.3-00069 firmware to 1.1.3-00091
+- qcom: Add QDSP firmware file for Qualcomm QDU100 device.
+- ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00302-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1.115823.3
+- ath12k: QCN9274 hw2.0: update to WLAN.WBE.1.5-01651-QCAHKSWPL_SILICONZ-1
+- ath11k: WCN6855 hw2.0: update board-2.bin
+- ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04650-QCAHSPSWPL_V1_V2_SILICONZ_IOE-2
+- ath11k: QCA2066 hw2.1: update to WLAN.HSP.1.1-03926.13-QCAHSPSWPL_V2_SILICONZ_CE-2.52297.9
+- ath11k: QCA2066 hw2.1: update board-2.bin
+- qcom: Update xbl_config firmware file.
+- amdgpu: Update GCN 4.0.5 microcode
+- amdgpu: Update SDMA 6.1.0 microcode
+- amdgpu: Update GC 11.5.0 microcode
+- qcom: Add QDU100 firmware image files required for booting.
+- linux-firmware: Add firmware for airoha-npu driver
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20250721233113
+- qcom: Update DSP firmware for qcm6490 platform
+- qcom: update Venus firmware file for v6.0
+- i915: Xe3LPD DMC v2.29
+- linux-firmware: Update AMD cpu microcode
+- qcom: Add QCS6490 symlink for QUPv3 firmware
+- qcom: Add firmware binary for SM8750.
+- amdgpu: update dmcub fw for dcn314
+- cirrus: cs35l41: Add Firmware for various ASUS commercial Laptops using CS35L41 HDA
+- cirrus: cs35l41: Update Firmware for Dell Oasis
+- cirrus: cs35l56: Add firmware for Cirrus CS35L56 for various Dell laptops
+- qcom: Add Audio topology for QCS6490 RB3Gen2
+- intel_vpu: Update NPU firmware
+- amdgpu: update dmcub fw for various DCN version
+- WHENCE: extract more license statements
+- WHENCE: clarify io_ti origin
+- amdgpu: Update GC 11.5.1 microcode
+Resolves: RHEL-108919
+
 * Wed Jul 16 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250716-151.3
 - Update linux-firmware to latest upstream (RHEL-103993)
   Changes since the last update are noted on items below, copied from
