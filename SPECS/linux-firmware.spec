@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 151.4
+%global firmware_release 151.5
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250812
+Version:	20251008
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -516,6 +516,153 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Wed Oct 08 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20251008-151.5
+- Update linux-firmware to latest upstream (RHEL-119890)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom: Update DSP firmware for sa8775p platform
+- amdgpu: DMCUB updates for various ASICs
+- WHENCE: remove link for Kaanapali video firmware
+- intel_vpu: Update NPU firmware
+- linux-firmware: Add Dell ISH firmware for Intel Lunar Lake systems
+- Update VCN for Navi1x, Green Sardine and Renoir
+- WHENCE: extract multitech license text
+- WHENCE: extract ueagle license
+- WHENCE: use LICENCE.sensoray for s2255drv
+- WHENCE: rename LICENCE.go7007-s2250 to LICENCE.sensoray
+- WHENCE: clean up emi62 and yam license statements
+- qcom: vpu: update video firmware binary for SM8550
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA
+- qcom: vpu: add video firmware for Kaanapali
+- qcom: Update DSP firmware for qcs8300 platform.
+- qcom: Add Audio topology for HAMOA-EVK
+- intel/ish:Add ISH firmware file for Intel Lunar Lake platform
+- mediatek: update firmware version info for MT7986/81/16
+- linux-firmware: ql2500_fw: update ISP25xx Firmware
+- qcom: Update aic100 firmware files
+- qcom: Add audio topology and ADSP firmware for qcs6490-radxa-dragon-q6a
+- amdgpu: DMCUB updates for various ASICs
+- mediatek: mtk_wed: drop links for mt7988
+- Revert "amdgpu: update gc 10.3.6 firmware"
+- qcom: Update DSP firmware for qcs8300 platform.
+- powervr: update firmware for Imagination Technologies BXS-4-64 GPU
+- qcom: Update DSP firmware for sa8775p platform.
+- amdgpu: DMCUB updates for various ASICs
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- qcom: move LEMANS EVK firmware to correct location
+- amdgpu: update PSP 14.0.3 kicker firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update VPE 6.1.0 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update SMU 14.0.2 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update SMU 13.0.0 kicker firmware
+- amdgpu: update PSP 13.0.0 kicker firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update SMU 13.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update GC 9.4.4 firmware
+- amdgpu: update SDMA 6.1.3 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update VPE 6.1.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- linux-firmware: update firmware for en8811h 2.5G ethernet phy
+- amdgpu: DMCUB updates for various ASICs
+- intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10
+- mediatek MT7922: update bluetooth firmware to 20250903123504
+- linux-firmware: update firmware for MT7922 WiFi device
+- qcom: move Monaco EVK topology from qcs8275 to qcs8300 subdir
+- qcom: Add Audio topology for MONACO-EVK
+- qcom: add CDSP firmware for qcs615 platform
+- qcom: Add Audio topology for LEMANS-EVK
+- ath12k: WCN7850 hw2.0@ncm865: add to WLAN.IOE_HMT.1.1-00018-QCAHMTSWPL_V1.0_V2.0_SILICONZ-1
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925:update bluetooth firmware to 20250825220109 Update binary firmware for MT7925 BT devices.
+- qcom: vpu: update firmware binaries to fix encoder drain handling
+- intel_vpu: Update NPU firmware
+- Revert "cs35l56: Rename firmware for Thinkbook 16P Gen6 (17AA3921) without multiple speakers"
+- cs35l56: Rename firmware for Thinkbook 16P Gen6 (17AA3921) without multiple speakers
+- xe: Update GUC to v70.49.4 for BMG, LNL, PTL
+- i915: Update GUC to v70.49.4 for ADL-P, DG1, DG2, MTL, TGL
+- qcom: add ADSP firmware for qcs615 platform
+- rtl_bt: Update RTL8822C BT USB firmware to 0x2B66_D962
+- iwlwifi: add Bz-HR FW for core90-93 release
+- Fix link entry for qat_895xcc.bin
+- Move QAT firmware to intel/ subdirectory
+- Move all iwlwifi top level files to intel/ directory
+- Revert "intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10"
+- ath11k: Support WCN6855 hw2.1 with NFA firmware variant
+- amdgpu: Update ISP FW for isp v4.1.1
+- Update README.md to clarify S-o-b requirements
+- firmware: qcom: Reorder VPU firmware entries in WHENCE
+- intel_vpu: Update NPU firmware
+- amdgpu: DMCUB updates for various ASICs
+- intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10
+- cirrus: cs35l41: Move entries to correct driver section in WHENCE
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+- ath11k: WCN6855 hw2.0@nfa765: add to WLAN.HSP.1.1-04685-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+- qcom: Add firmware binary for SM8650.
+- Link rtl8723b_config.bin to rtl8723bs
+- rtw89: 8922a: update fw to v0.35.80.3
+- rtw89: 8852c: update fw to v0.27.129.4
+- rtw89: 8852c: update fw to v0.27.129.3
+- qcom: add CDSP firmware for x1e80100 platform
+- iwlwifi: add Bz/gl FW for core97-84 release
+- iwlwifi: update ty/So/Ma firmwares for core97-84 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core97-84 release
+- amdgpu: DMCUB updates for various ASICs
+- realtek: rt1321: Add patch firmware of MCU
+- mediatek: Add MT8189 SCP firmware
+Resolves: RHEL-119890
+
 * Tue Aug 12 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250812-151.4
 - Update linux-firmware to latest upstream (RHEL-108919)
   Changes since the last update are noted on items below, copied from
