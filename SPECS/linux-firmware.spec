@@ -1,12 +1,12 @@
-%global checkout f0f46349
+%global checkout 8b4de42e
 
-%global firmware_release 133
+%global firmware_release 134
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20250916
+Version:	20251019
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -316,6 +316,7 @@ find . -type d | sed -e '/^.$/d' > $FILEDIR/linux-firmware.dirs
 popd
 sed -i -e 's:^./::' linux-firmware.{files,dirs}
 sed -i -e '/^iwlwifi/d' \
+	-i -e '/^intel\/iwlwifi\/iwlwifi/d' \
 	-i -e '/^libertas\/sd8686/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
@@ -329,63 +330,79 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %files -n iwl100-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-100-5.ucode
 
 %files -n iwl105-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-105-*.ucode
 
 %files -n iwl135-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-135-*.ucode
 
 %files -n iwl1000-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-1000-*.ucode
 
 %files -n iwl2000-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-2000-*.ucode
 
 %files -n iwl2030-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-2030-*.ucode
 
 %files -n iwl3160-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode
 %{_firmwarepath}/iwlwifi-3168-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3160-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3168-*.ucode
 
 %files -n iwl3945-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3945-*.ucode
 
 %files -n iwl4965-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-4965-*.ucode
 
 %files -n iwl5000-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-5000-*.ucode
 
 %files -n iwl5150-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-5150-*.ucode
 
 %files -n iwl6000-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000-*.ucode
 
 %files -n iwl6000g2a-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2a-*.ucode
 
 %files -n iwl6000g2b-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2b-*.ucode
 
 %files -n iwl6050-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6050-*.ucode
 
 %files -n iwl7260-firmware
 %license WHENCE LICENCE.iwlwifi_firmware
@@ -408,6 +425,25 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-gl-*.pnvm
 %{_firmwarepath}/iwlwifi-ma-*.ucode
 %{_firmwarepath}/iwlwifi-ma-*.pnvm
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7260-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7265-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7265D-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-8000C-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-8265-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-9000-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-9260-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-cc-a0-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-Qu*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ty-a0-gf-a0-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ty-a0-gf-a0*.pnvm
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-so-a0-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-so-a0-*.pnvm
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-bz-b0-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-bz-b0-*.pnvm*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-gl-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-gl-*.pnvm
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ma-*.ucode
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ma-*.pnvm
 
 %files -n libertas-usb8388-firmware
 %license WHENCE LICENCE.Marvell
@@ -491,6 +527,125 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Sun Oct 19 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20251019-134.git8b4de42e
+- Move Intel wireless firmware from linux-firmware back to iwl*-firmware (RHEL-120905)
+- Update linux-firmware to latest upstream
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- amdgpu: DMCUB updates for various ASICs
+- nvidia: add generic bootloader for GSP-enabled systems
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.0 build
+- qcom: vpu: rename firmware binaries
+- Intel IPU7: Update product signed firmware binary
+- i915: Xe2LPD DMC v2.29
+- i915: Xe3LPD DMC v2.32
+- i915: Xe3LPD_3002 DMC v2.27
+- WHENCE: nvidia: rearrange GSP-RM firmware lines
+- linux-firmware: Add ISH firmware file for Intel Pather Lake platform
+- linux-firmware: Update firmware file for Intel Magnetar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- qcom: add CDSP firmware for kaanapali platform
+- qcom: add version for A650 GMU firmware
+- qca: Update Bluetooth WCN6750 1.1.3-00091 firmware to 1.1.3-00100
+- qcom: Add firmwares for Kaanapali GPU
+- qcom: Update A623 GMU fw
+- qcom: Fix QCS615 chipset's GPU secure fw
+- qcom: Update DSP firmware for sa8775p platform
+- amdgpu: DMCUB updates for various ASICs
+- WHENCE: remove link for Kaanapali video firmware
+- intel_vpu: Update NPU firmware
+- linux-firmware: Add Dell ISH firmware for Intel Lunar Lake systems
+- Update VCN for Navi1x, Green Sardine and Renoir
+- WHENCE: extract multitech license text
+- WHENCE: extract ueagle license
+- WHENCE: use LICENCE.sensoray for s2255drv
+- WHENCE: rename LICENCE.go7007-s2250 to LICENCE.sensoray
+- WHENCE: clean up emi62 and yam license statements
+- qcom: vpu: update video firmware binary for SM8550
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA
+- qcom: vpu: add video firmware for Kaanapali
+- qcom: Update DSP firmware for qcs8300 platform.
+- qcom: Add Audio topology for HAMOA-EVK
+- intel/ish:Add ISH firmware file for Intel Lunar Lake platform
+- mediatek: update firmware version info for MT7986/81/16
+- linux-firmware: ql2500_fw: update ISP25xx Firmware
+- qcom: Update aic100 firmware files
+- qcom: Add audio topology and ADSP firmware for qcs6490-radxa-dragon-q6a
+- amdgpu: DMCUB updates for various ASICs
+- mediatek: mtk_wed: drop links for mt7988
+- Revert "amdgpu: update gc 10.3.6 firmware"
+- qcom: Update DSP firmware for qcs8300 platform.
+- powervr: update firmware for Imagination Technologies BXS-4-64 GPU
+- qcom: Update DSP firmware for sa8775p platform.
+- amdgpu: DMCUB updates for various ASICs
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- qcom: move LEMANS EVK firmware to correct location
+- amdgpu: update PSP 14.0.3 kicker firmware
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update VPE 6.1.0 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update SMU 14.0.2 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update SMU 13.0.0 kicker firmware
+- amdgpu: update PSP 13.0.0 kicker firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update SMU 13.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update GC 9.4.4 firmware
+- amdgpu: update SDMA 6.1.3 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update VPE 6.1.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+Resolves: RHEL-120905
+
 * Tue Aug  5 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250916-133.gitf0f46349
 - Update linux-firmware to latest upstream (RHEL-114999)
   Changes since the last update are noted on items below, copied from
