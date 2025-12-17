@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 151.5
+%global firmware_release 155.1
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20251008
+Version:	20251111
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -330,7 +330,9 @@ find . \! -type d > $FILEDIR/linux-firmware.files
 find . -type d | sed -e '/^.$/d' > $FILEDIR/linux-firmware.dirs
 popd
 sed -i -e 's:^./::' linux-firmware.{files,dirs}
-sed -i -e '/^iwlwifi/d' \
+sed \
+	-i -e '/^iwlwifi/d' \
+	-i -e '/^intel\/iwlwifi\/iwlwifi/d' \
 	-i -e '/^libertas\/sd8686/d' \
 	-i -e '/^libertas\/usb8388/d' \
 	-i -e '/^mrvl\/sd8787/d' \
@@ -352,63 +354,79 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %files -n iwl100-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-100-5.ucode*
 
 %files -n iwl105-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-105-*.ucode*
 
 %files -n iwl135-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-135-*.ucode*
 
 %files -n iwl1000-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-1000-*.ucode*
 
 %files -n iwl2000-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-2000-*.ucode*
 
 %files -n iwl2030-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-2030-*.ucode*
 
 %files -n iwl3160-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode*
 %{_firmwarepath}/iwlwifi-3168-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3160-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3168-*.ucode*
 
 %files -n iwl3945-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-3945-*.ucode*
 
 %files -n iwl4965-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-4965-*.ucode*
 
 %files -n iwl5000-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-5000-*.ucode*
 
 %files -n iwl5150-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-5150-*.ucode*
 
 %files -n iwl6000-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000-*.ucode*
 
 %files -n iwl6000g2a-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2a-*.ucode*
 
 %files -n iwl6000g2b-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2b-*.ucode*
 
 %files -n iwl6050-firmware
 %license LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-6050-*.ucode*
 
 %files -n iwl7260-firmware
 %license LICENCE.iwlwifi_firmware
@@ -419,6 +437,13 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-8265-*.ucode*
 %{_firmwarepath}/iwlwifi-9000-*.ucode*
 %{_firmwarepath}/iwlwifi-9260-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7260-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7265-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-7265D-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-8000C-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-8265-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-9000-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-9260-*.ucode*
 %{_firmwarepath}/iwlwifi-cc-a0-*.ucode*
 %{_firmwarepath}/iwlwifi-gl-c0*
 %{_firmwarepath}/iwlwifi-ma-b0*
@@ -429,6 +454,13 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-so-a0-*.pnvm*
 %{_firmwarepath}/iwlwifi-bz-b0-*.ucode*
 %{_firmwarepath}/iwlwifi-bz-b0-*.pnvm*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-cc-a0-*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-gl-c0*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ma-b0*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-Qu*.ucode*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-ty-a0*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-so-a0*
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-bz-b0*
 
 %files -n libertas-usb8388-firmware
 %license LICENCE.Marvell
@@ -516,10 +548,73 @@ if st and st.type == "directory" then
 end
 
 %changelog
-* Wed Oct 08 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20251008-151.5
-- Update linux-firmware to latest upstream (RHEL-119890)
+* Tue Nov 11 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20251111-155.1
+- Update linux-firmware to latest upstream (RHEL-128738)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
+- rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905
+- linux-firmware: add firmware for mt7987 internal 2.5G ethernet phy
+- rtw88: 8822b: Update firmware to v30.20.0
+- rtl_nic: add firmware rtl8125k-1
+- ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- amdgpu: DMCUB updates for various ASICs
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add SOCCP firmware for kaanapali platform
+- xe: Update GUC to v70.53.0 for BMG, LNL, PTL
+- i915: Update GUC to v70.53.0 for DG2, MTL
+- rtw89: 8851b: update fw to v0.29.41.5
+- rtw89: 8852b: update fw to v0.29.128.0 with format suffix -2
+- rtw89: 8852b: update fw to v0.29.29.14
+- Revert "rtw89: 8852b: update fw to v0.29.128.0"
+- rtw89: 8852bt: update fw to v0.29.127.0 with format suffix -1
+- rtw89: 8852bt: update fw to v0.29.122.1
+- Revert "rtw89: 8852bt: update fw to v0.29.127.0"
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Create audio folder in ti folder, and move all the audio firmwares into it
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Update WHENCE for microcode_amd_fam19h.bin
+- linux-firmware: Update AMD cpu microcode
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20251015213201
+- rtl_bt: Add firmware and config files for RTL8761CUV
+- linux-firmware: Update AMD cpu microcode
+- qcom: add ADSP firmware for kaanapali platform
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Renaming the file to cover a wide range of HP Lunar Lake system.
+- mediatek MT7920: update bluetooth firmware to 20251020151255
+- linux-firmware: update firmware for MT7922 WiFi device
+- linux-firmware: update firmware for MT7920 WiFi device
+- amd-ucode: Fix minimum revisions in README
+- cirrus: cs35l41: Rename various Asus Laptop firmware files to not have Speaker ID
+- mediatek MT7922: update bluetooth firmware to 20251020143443
+- Revert "linux-firmware: update firmware for MT7922 WiFi device"
+- QCA: Update Bluetooth WCN6856 firmware 2.1.0-00653 to 2.1.0-00659
+- iwlwifi: add Bz/Fm and gl FW for core98-161 release
+- iwlwifi: update Bz/Hr and Bz/Gf firmwares for core98-161 release
+- iwlwifi: update ty/So/Ma firmwares for core98-161 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core98-161 release
+- intel: qat: Fix missing link
+- amdgpu: DMCUB updates for various ASICs
+- nvidia: add generic bootloader for GSP-enabled systems
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.0 build
+- qcom: vpu: rename firmware binaries
+- Intel IPU7: Update product signed firmware binary
+- i915: Xe2LPD DMC v2.29
+- i915: Xe3LPD DMC v2.32
+- i915: Xe3LPD_3002 DMC v2.27
+- WHENCE: nvidia: rearrange GSP-RM firmware lines
+- linux-firmware: Add ISH firmware file for Intel Pather Lake platform
+- linux-firmware: Update firmware file for Intel Magnetar core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- qcom: add CDSP firmware for kaanapali platform
+- qcom: add version for A650 GMU firmware
+- qca: Update Bluetooth WCN6750 1.1.3-00091 firmware to 1.1.3-00100
+- qcom: Add firmwares for Kaanapali GPU
+- qcom: Update A623 GMU fw
+- qcom: Fix QCS615 chipset's GPU secure fw
 - qcom: Update DSP firmware for sa8775p platform
 - amdgpu: DMCUB updates for various ASICs
 - WHENCE: remove link for Kaanapali video firmware
@@ -661,10 +756,10 @@ end
 - amdgpu: DMCUB updates for various ASICs
 - realtek: rt1321: Add patch firmware of MCU
 - mediatek: Add MT8189 SCP firmware
-Resolves: RHEL-119890
+Resolves: RHEL-128738
 
-* Tue Aug 12 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250812-151.4
-- Update linux-firmware to latest upstream (RHEL-108919)
+* Tue Aug 12 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250812-155
+- Update linux-firmware to latest upstream (RHEL-108845)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - amdgpu: DMCUB updates for various ASICs
@@ -764,10 +859,10 @@ Resolves: RHEL-119890
 - WHENCE: extract more license statements
 - WHENCE: clarify io_ti origin
 - amdgpu: Update GC 11.5.1 microcode
-Resolves: RHEL-108919
+Resolves: RHEL-108845
 
-* Wed Jul 16 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250716-151.3
-- Update linux-firmware to latest upstream (RHEL-103993)
+* Wed Jul 16 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250716-154
+- Update linux-firmware to latest upstream (RHEL-95338)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - rtw89: 8852b: update fw to v0.29.128.0
@@ -886,10 +981,10 @@ Resolves: RHEL-108919
 - mediatek MT7921: update bluetooth firmware to 20250523111333
 - linux-firmware: update firmware for MT7922 WiFi device
 - linux-firmware: update firmware for MT7921 WiFi device
-Resolves: RHEL-103993
+Resolves: RHEL-95338
 
-* Wed Jun 04 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250604-151.2
-- Update linux-firmware to latest upstream (RHEL-94292)
+* Wed Jun 04 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250604-153
+- Update linux-firmware to latest upstream (RHEL-95338)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - xe: Update GUC to v70.45.2 for BMG, LNL
@@ -931,10 +1026,10 @@ Resolves: RHEL-103993
 - brcmfmac: Add a couple of NanoPi devices
 - rtl_nic: add firmware rtl8127a-1
 - cnm: update chips&media wave521c firmware.
-Resolves: RHEL-94292
+Resolves: RHEL-95338
 
-* Tue May 13 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250513-151.1
-- Update linux-firmware to latest upstream (RHEL-91077)
+* Wed May 14 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250513-152
+- Update linux-firmware to latest upstream (RHEL-87565)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - intel_vpu: Update NPU firmware
@@ -1070,7 +1165,7 @@ Resolves: RHEL-94292
 - qcom: Add Audio firmware for Lenovo Slim 7x
 - qcom: Add Audio firmware for Lenovo T14s
 - amdgpu: DMCUB updates for various ASICs
-Resolves: RHEL-91077
+Resolves: RHEL-87565
 
 * Fri Mar 14 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20250314-151
 - accel: ivpu: Update firmware for NPU (RHEL-38587)
