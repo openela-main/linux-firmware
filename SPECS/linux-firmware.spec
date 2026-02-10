@@ -1,12 +1,12 @@
-%global checkout 8b4de42e
+%global checkout 486ac8f9
 
-%global firmware_release 134
+%global firmware_release 135
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20251019
+Version:	20260112
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -425,6 +425,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/iwlwifi-gl-*.pnvm
 %{_firmwarepath}/iwlwifi-ma-*.ucode
 %{_firmwarepath}/iwlwifi-ma-*.pnvm
+%{_firmwarepath}/iwlwifi-sc-a0-*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-7260-*.ucode
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-7265-*.ucode
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-7265D-*.ucode
@@ -444,6 +445,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-gl-*.pnvm
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-ma-*.ucode
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-ma-*.pnvm
+%{_firmwarepath}/intel/iwlwifi/iwlwifi-sc-a0-*
 
 %files -n libertas-usb8388-firmware
 %license WHENCE LICENCE.Marvell
@@ -527,6 +529,215 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Mon Jan 12 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260112-135.git486ac8f9
+- Update linux-firmware to latest upstream (RHEL-140730)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom: Update DSP firmware for QCM6490 platform
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.1 build
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20260106153314
+- mediatek MT7920: update bluetooth firmware to 20260105151350
+- mediatek MT7922: update bluetooth firmware to 20260106153735
+- linux-firmware: update firmware for MT7922 WiFi device
+- Mellanox: Add new mlxsw_spectrum firmware xx.2016.3900
+- amdgpu: Update dcn314, dcn315 firmware to 0.1.42.0
+- qcom: Update DSP firmware for sa8775 platform
+- QCA: Add Bluetooth firmware for QCC2072 uart interface
+- i915: Xe3p_LPD DMC v2.33
+- qcom: Update DSP firmware for qcs8300 platform
+- linux-firmware: update firmware for MT7920 WiFi device
+- qcom: Update aic100 firmware files
+- qca: Update Bluetooth WCN6750 1.1.3-00100 firmware to 1.1.3-00105
+- firmware: Revert kernel_boot.elf due to license compliance issue
+- linux-firmware: add firmware for an8811hb 2.5G ethernet phy
+- i915: Xe3LPD_3002 DMC v2.28
+- i915: Xe3LPD DMC v2.33
+- intel_vpu: Add firmware for 50xx NPUs and update older ones
+- linux-firmware: Update AMD SEV firmware
+- amdgpu: DMCUB updates for various ASICs
+- qcom: venus-5.4: fix ELF segment alignment to 4 bytes
+- mediatek MT7925: update bluetooth firmware to 20251210093205
+- linux-firmware: update firmware for MT7925 WiFi device
+- rcar_gen4_pcie: add firmware for Renesas R-Car Gen4 PCIe controller
+- qcom: Update CDSP firmware for qcm6490 platform
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x488C_DB55
+- linux-firmware: Add firmware file for Intel Scorpius core
+- rtw89: 8852b: update fw to v0.29.29.15
+- cirrus: cs35l41: Update firmware and tuning for various HP laptops
+- cirrus: cs35l41: Add support for new HP Clipper laptop
+- qcom: drop compatibility a640_zap.mdt symlink
+- qcom: add version for a530v3_gpmu.fw2
+- xe: Update GUC to v70.55.3 for BMG, PTL
+- iwlwifi: add Bz/Sc FW for core101-82 release
+- iwlwifi: Add Sc/Gf firmware for core101-82 release
+- iwlwifi: update ty/So/Ma firmwares for core101-82 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core101-82 release
+- amdgpu: DMCUB updates for various ASICs
+- qcom: Add firmwares for sm8150 GPU
+- qcom: Add firmwares for sm8450 GPU
+- qcom: Add firmwares for sm8550 GPU
+- qcom: Add firmwares for sm8650 GPU
+- qcom: Add firmwares for sm8750 GPU
+- Makefile: add licence header
+- ath10k: WCN3990 hw1.0: update board-2.bin
+- ath10k: QCA9888 hw2.0: update board-2.bin
+- ath10k: QCA4019 hw1.0: update board-2.bin
+- cirrus: cs35l41: Add support for new HP laptops
+- Revert "amdgpu: update GC 11.5.0 firmware"
+- linux-firmware: Update amd-ucode copyright information
+- linux-firmware: Update AMD cpu microcode
+- linux-firmware: Update firmware file for Intel Scorpius core
+- linux-firmware: Update firmware file for Intel BlazarIGfP core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04866-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+- ath11k: QCA2066 hw2.1: update board-2.bin
+- qcom: update ADSP firmware for x1e80100 platform, change the license
+- qcom: reorder ADSP, CDSP firmware entries for qcs8300 in WHENCE
+- Reapply "amdgpu: update SMU 14.0.3 firmware"
+- Revert "amdgpu: update SMU 14.0.3 firmware"
+- Revert "amdgpu: update GC 10.3.6 firmware"
+- Revert "amdgpu: update GC 11.5.1 firmware"
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20251124093155
+- intel_vpu: Update NPU firmware
+- WHENCE: fix version string for video firmware
+- qcom: vpu: update video firmware binary for SM8250
+- xe: Update GUC to v70.54.0 for BMG, PTL
+- Revert "amdgpu: update GC 11.0.1 firmware"
+- QCA: Add Bluetooth firmware for WCN685x uart interface
+- qcom: Add ADSP firmware for qcs6490-thundercomm-rubikpi3
+- qcom: venus-5.4: update firmware binary for v5.4
+- qcom: venus-5.4: remove unused firmware file
+- iwlwifi: add Sc/Wh FW for core98-181 release
+- amdgpu: DMCUB updates for various ASICs
+- rtl_bt: Update RTL8852B BT USB FW to 0x42D3_4E04
+- ASoC: tas2781: Add more symbol links on SPI devices
+- amdgpu: update vega20 firmware
+- amdgpu: update vega12 firmware
+- amdgpu: update vega10 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update SMU 14.0.3 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update SMU 14.0.2 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update smu 13.0.7 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update smu 13.0.0 kicker firmware
+- amdgpu: update PSP 13.0.0 kicker firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SMU 13.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update GC 9.4.4 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update SDMA 4.4.2 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update aldebaran firmware
+- amdgpu: add vce1 firmware
+- mediatek MT7922: update bluetooth firmware to 20251118163447
+- linux-firmware: update firmware for MT7922 WiFi device
+- qcom: update ADSP, CDSP firmware for kaanapali platform, change the license
+- qcom: add ADSP, CDSP firmware for sm8750 platform
+- rtl_nic: add firmware rtl9151a-1
+- qcom: Update aic100 firmware files
+- mt76: add firmware for MT7990
+- mt76: update firmware for MT7992
+- mt76: update firmware for MT7996
+- cirrus: cs35l57: Add firmware for a few Dell products
+- cirrus: cs42l45: Add firmware for Cirrus Logic CS42L45 SDCA codec
+- qcom: Add sdx35 Foxconn vendor firmware image file
+- linux-firmware: Update AMD cpu microcode
+- rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905
+- linux-firmware: add firmware for mt7987 internal 2.5G ethernet phy
+- rtw88: 8822b: Update firmware to v30.20.0
+- rtl_nic: add firmware rtl8125k-1
+- ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- amdgpu: DMCUB updates for various ASICs
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add SOCCP firmware for kaanapali platform
+- xe: Update GUC to v70.53.0 for BMG, LNL, PTL
+- i915: Update GUC to v70.53.0 for DG2, MTL
+- rtw89: 8851b: update fw to v0.29.41.5
+- rtw89: 8852b: update fw to v0.29.128.0 with format suffix -2
+- rtw89: 8852b: update fw to v0.29.29.14
+- Revert "rtw89: 8852b: update fw to v0.29.128.0"
+- rtw89: 8852bt: update fw to v0.29.127.0 with format suffix -1
+- rtw89: 8852bt: update fw to v0.29.122.1
+- Revert "rtw89: 8852bt: update fw to v0.29.127.0"
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Create audio folder in ti folder, and move all the audio firmwares into it
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Update WHENCE for microcode_amd_fam19h.bin
+- linux-firmware: Update AMD cpu microcode
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20251015213201
+- rtl_bt: Add firmware and config files for RTL8761CUV
+- linux-firmware: Update AMD cpu microcode
+- qcom: add ADSP firmware for kaanapali platform
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Renaming the file to cover a wide range of HP Lunar Lake system.
+- mediatek MT7920: update bluetooth firmware to 20251020151255
+- linux-firmware: update firmware for MT7922 WiFi device
+- linux-firmware: update firmware for MT7920 WiFi device
+- amd-ucode: Fix minimum revisions in README
+- cirrus: cs35l41: Rename various Asus Laptop firmware files to not have Speaker ID
+- mediatek MT7922: update bluetooth firmware to 20251020143443
+- Revert "linux-firmware: update firmware for MT7922 WiFi device"
+- QCA: Update Bluetooth WCN6856 firmware 2.1.0-00653 to 2.1.0-00659
+- iwlwifi: add Bz/Fm and gl FW for core98-161 release
+- iwlwifi: update Bz/Hr and Bz/Gf firmwares for core98-161 release
+- iwlwifi: update ty/So/Ma firmwares for core98-161 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core98-161 release
+- intel: qat: Fix missing link
+Resolves: RHEL-140730
+
 * Sun Oct 19 2025 Denys Vlasenko <dvlasenk@redhat.com> - 20251019-134.git8b4de42e
 - Move Intel wireless firmware from linux-firmware back to iwl*-firmware (RHEL-120905)
 - Update linux-firmware to latest upstream
