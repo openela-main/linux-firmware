@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 155.2
+%global firmware_release 155.3
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260107
+Version:	20260130
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -550,6 +550,47 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Fri Jan 30 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260130-155.3
+- Update linux-firmware to latest upstream (RHEL-145523)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- intel/ish: Add Lenovo ISH firmware support for X1 and X9 systems
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+- cirrus: cs35l57 cs35l63: Add firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56 cs35l57: Add and update firmware for some Dell laptops
+- Intel IPU7: Update firmware binary for Panther Lake
+- linux-firmware: update firmware for MT7921 WiFi device
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Add firmware file for Intel ScorpiusGfp2 core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- linux-firmware: Update firmware file for Intel BlazarIGfP core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x06EB_C65F
+- linux-firmware: Add firmware for airoha-npu-7583 driver
+- iwlwifi: add Bz/Sc FW for core102-56 release
+- iwlwifi: Add Hr/Gf firmware for core102-56 release
+- iwlwifi: update ty/So/Ma firmwares for core102-56 release
+- xe: Add GSC 105.0.2.1301 for PTL
+- mediatek: rename MT8188 SCP firmware
+- qcom: Update DSP firmware for QCM6490 platform
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.1 build
+- linux-firmware: update firmware for MT7925 WiFi device
+- mediatek MT7925: update bluetooth firmware to 20260106153314
+- mediatek MT7920: update bluetooth firmware to 20260105151350
+- mediatek MT7922: update bluetooth firmware to 20260106153735
+- linux-firmware: update firmware for MT7922 WiFi device
+- Mellanox: Add new mlxsw_spectrum firmware xx.2016.3900
+- amdgpu: Update dcn314, dcn315 firmware to 0.1.42.0
+- qcom: Update DSP firmware for sa8775 platform
+- QCA: Add Bluetooth firmware for QCC2072 uart interface
+- i915: Xe3p_LPD DMC v2.33
+- qcom: Update DSP firmware for qcs8300 platform
+- linux-firmware: update firmware for MT7920 WiFi device
+Resolves: RHEL-145523
+
 * Wed Jan 07 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260107-155.2
 - Update linux-firmware to latest upstream (RHEL-139979)
   Changes since the last update are noted on items below, copied from
