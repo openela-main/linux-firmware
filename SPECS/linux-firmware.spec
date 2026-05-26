@@ -1,12 +1,12 @@
-%global checkout dc85cced
+%global checkout 027be1e3
 
-%global firmware_release 138
+%global firmware_release 139
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260410
+Version:	20260507
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -529,6 +529,50 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Thu May  7 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260507-139.git027be1e3
+- Update linux-firmware to latest upstream (RHEL-172252)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- rtl_bt: Add missing rtl8761a_config.bin for RTL8761AU
+- amdgpu: DMCUB updates for various ASICs
+- Linux-firmware: Add Dell ISH firmware 581.7783.0 for Intel Panther Lake systems.
+- qcom: update ADSP firmware for x1e80100 platform
+- linux-firmware:Add firmware for Lontium LT7911EXC bridge
+- qcom/x1e80100/dell: mark that qcom/NOTICE.txt is applicable too
+- qcom: Update CDSP firmware for Kaanapali platform
+- qcom: vpu: add Gen2 firmware binary for Agatti
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Add firmware file for Intel BlazarIW
+- linux-firmware: Add firmware file for Intel ScorpiusGfp2 core
+- linux-firmware: Add firmware file for Intel BlazarIGfp2 core
+- linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- qcom: Update ADSP firmware for Glymur platform
+- mediatek MT7925: update bluetooth firmware to 20260414153243
+- linux-firmware: update firmware for MT7925 WiFi device
+- Revert "linux-firmware: Update firmware file for Intel Quasar core"
+- qcom: Add gpdspr.jsn for qcs8300 platform
+- ath12k: QCC2072 hw1.0: add to WLAN.COL.1.0.c2-00074-QCACOLSWPL_V1_TO_SILICONZ-1
+- ath12k: QCC2072 hw1.0: add board-2.bin
+- ath12k: IPQ5424 hw1.0: add to WLAN.WBE.1.6-01275-QCAHKSWPL_SILICONZ-1
+- ath12k: IPQ5424 hw1.0: add board-2.bin
+- qcom: Update ADSP firmware for Kaanapali platform
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops (17aa235c 17aa235d)
+- QCA: Update Bluetooth WCN6856 firmware 2.1.0-00665 to 2.1.0-00666
+- amdgpu: DMCUB updates for DCN36
+- linux-firmware: Update AMD cpu microcode
+- powervr: update Imagination Rogue firmware images
+- qcom: Update ADSP firmware for Kaanapali platform
+- i915: Xe3LPD DMC v2.34
+- i915: Xe3LPD_3002 DMC v2.29
+- qcom: Update ADSP firmware for QCM6490 platform
+- firmware/amdgpu: Update DMCUB fw to Release 0.1.55.0
+- mediatek: vpu: drop old sym link
+Resolves: RHEL-172252
+
 * Fri Apr 10 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260410-138.gitdc85cced
 - Update linux-firmware to latest upstream (RHEL-164388)
   Changes since the last update are noted on items below, copied from
