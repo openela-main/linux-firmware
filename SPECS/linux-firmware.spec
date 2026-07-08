@@ -1,12 +1,12 @@
-%global checkout 027be1e3
+%global checkout 4ae4d61b
 
-%global firmware_release 139
+%global firmware_release 140
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260507
+Version:	20260608
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -529,7 +529,124 @@ if st and st.type == "directory" then
 end
 
 %changelog
-* Thu May  7 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260507-139.git027be1e3
+* Mon Jun 08 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260608-140.git4ae4d61b
+- Update linux-firmware to latest upstream (RHEL-179825)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- QCA: Update Bluetooth WCN6856 firmware 2.1.0-00666 to 2.1.0-00669
+- qcom: Update DSP firmware for qcs8300 platform
+- qcom: Update DSP firmware for sa8775p platform
+- amdgpu: Update DMCUB fw for DCN314
+- amdgpu: revert yellow carp VCN firmware
+- amdgpu: revert vangogh VCN firmware
+- amdgpu: revert sienna cichlid VCN firmware
+- amdgpu: revert navy flounder VCN firmware
+- amdgpu: revert dimgrey cavefish VCN firmware
+- amdgpu: revert beige_goby VCN firmware
+- qcom: update CDSP firmware for x1e80100 platform
+- cirrus: cs35l56: Add firmware for Cirrus Amps for a Dell laptop
+- linux-firmware: Add RCA firmware files for tas257x projects
+- intel_vpu: Update NPU firmware
+- cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for various Dell laptops
+- cirrus: cs35l56: Update firmware for Cirrus Amps for a couple of Lenovo laptops
+- cirrus: cs35l56: Add firmware for Cirrus Amps for a Lenovo laptop
+- QCA: Add BCS calibration binary for QCC2072
+- QCA: Update Bluetooth firmware for QCC2072 UART interface
+- amdgpu: DMCUB updates for various ASICs
+- rtl_nic: add firmware rtl8261c.bin for RTL8261c
+- cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for two Dell laptops
+- i915: Xe3LPD DMC v2.36
+- i915: Xe3LPD_3002 DMC v2.31
+- i915: Xe3p_LPD DMC v2.37
+- cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+- cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Lenovo laptops
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+- qcom: Add gpu firmwares for Shikra chipset
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+- rtw89: 8852b: update fw to v0.29.29.18
+- rtw89: 8852bt: update fw to v0.29.122.2
+- amdgpu: Update gc 11.0.1 microcode
+- ASoC: tas2783: Add Firmware files for tas2783A projects
+- linux-firmware: add firmware for MT7927 WiFi device
+- Add HP ISH firmware for Intel Panther Lake systems
+- ti: Add PCM6240 firmware with multiple audio profiles support
+- qcom: add CDSP firmware for shikra platform
+- amdgpu: DMCUB updates for various ASICs
+- qcom: update ADSP firmware for x1e80100 platform
+- lt*_fw.bin: move to Lontium subdir
+- qcom: Add cdsp1r.jsn for sa8775p platform
+- amdgpu: rembrandt DMCUB v4.0.74.0
+- linux-firmware: Add firmware for Lontium LT9611C
+- xe: Update GUC to v70.65.0 for LNL, BMG, PTL
+- amdgpu: update SMU 14.0.3 kicker firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update SDMA 6.1.3 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update VPE 6.1.3 firmware
+- amdgpu: update SDMA 6.1.2 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update SDMA 6.0.2 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update vangogh firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update PSP 13.0.0 kicker firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SDMA 6.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update SDMA 4.4.4 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update SDMA 4.4.5 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update VPE 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update SDMA 6.1.1 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update SDMA 4.4.2 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update VPE 6.1.0 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update SDMA 6.1.0 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update SDMA 6.0.1 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update renoir firmware
+- amdgpu: update aldebaran firmware
+Resolves: RHEL-179825
+
+* Thu May 07 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260507-139.git027be1e3
 - Update linux-firmware to latest upstream (RHEL-172252)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
