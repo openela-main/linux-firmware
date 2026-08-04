@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 161
+%global firmware_release 161.1
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260609
+Version:	20260707
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -346,90 +346,90 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %files -f linux-firmware.files
 %dir %{_firmwarepath}
 %doc %{_defaultdocdir}/%{name}
-%license LICENCE.* LICENSE.* GPL*
+%license LICENSES/LICENCE.* LICENSES/LICENSE.* LICENSES/GPL*
 
 %files whence
 %license WHENCE
 
 %files -n iwl100-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-5.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-100-5.ucode*
 
 %files -n iwl105-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-105-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-105-*.ucode*
 
 %files -n iwl135-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-135-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-135-*.ucode*
 
 %files -n iwl1000-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-1000-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-1000-*.ucode*
 
 %files -n iwl2000-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2000-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-2000-*.ucode*
 
 %files -n iwl2030-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-2030-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-2030-*.ucode*
 
 %files -n iwl3160-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode*
 %{_firmwarepath}/iwlwifi-3168-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-3160-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-3168-*.ucode*
 
 %files -n iwl3945-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-3945-*.ucode*
 
 %files -n iwl4965-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-4965-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-4965-*.ucode*
 
 %files -n iwl5000-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5000-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-5000-*.ucode*
 
 %files -n iwl5150-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-5150-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-5150-*.ucode*
 
 %files -n iwl6000-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-6000-*.ucode*
 
 %files -n iwl6000g2a-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2a-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2a-*.ucode*
 
 %files -n iwl6000g2b-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6000g2b-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-6000g2b-*.ucode*
 
 %files -n iwl6050-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-6050-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-6050-*.ucode*
 
 %files -n iwl7260-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-7260-*.ucode*
 %{_firmwarepath}/iwlwifi-7265-*.ucode*
 %{_firmwarepath}/iwlwifi-7265D-*.ucode*
@@ -465,32 +465,32 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-sc-a0-*
 
 %files -n libertas-usb8388-firmware
-%license LICENCE.Marvell
+%license LICENSES/LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_v9.bin*
 
 %files -n libertas-usb8388-olpc-firmware
-%license LICENCE.Marvell
+%license LICENSES/LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/usb8388_olpc.bin*
 
 %files -n libertas-sd8686-firmware
-%license LICENCE.Marvell
+%license LICENSES/LICENCE.Marvell
 %dir %{_firmwarepath}/libertas
 %{_firmwarepath}/libertas/sd8686*
 
 %files -n libertas-sd8787-firmware
-%license LICENCE.Marvell
+%license LICENSES/LICENCE.Marvell
 %dir %{_firmwarepath}/mrvl
 %{_firmwarepath}/mrvl/sd8787*
 
 %files -n liquidio-firmware
-%license LICENCE.cavium_liquidio
+%license LICENSES/LICENCE.cavium_liquidio
 %dir %{_firmwarepath}/liquidio
 %{_firmwarepath}/liquidio/*
 
 %files -n netronome-firmware
-%license LICENCE.Netronome
+%license LICENSES/LICENCE.Netronome
 %dir %{_firmwarepath}/netronome
 %{_firmwarepath}/netronome/*
 
@@ -550,6 +550,71 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Jul 07 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260707-161.1
+- Update linux-firmware to latest upstream (RHEL-188388)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- xe: Release GuC firmware for NVL-S
+- cirrus: cs35l56: Update firmware for the ASUS UX5406SA
+- qcom: vpu: add Gen2 firmware binary for Purwa
+- cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+- QCA: Add Bluetooth firmware for WCN6855 ROM 1.0
+- iwlwifi: add Bz/Sc FW for core24.60-33 release
+- iwlwifi: Add Hr/Gf firmware for core24.60-33 release
+- iwlwifi: update ty/So/Ma firmwares for core24.60-33 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core24.60-33 release
+- cirrus: cs35l56: Add firmware for Cirrus Amps for a few Dell laptops
+- docs: address feedback on LICENSE-CRITERIA.md
+- Adjust statement on existing firmware
+- docs: add LICENSE-CRITERIA.md as project licensing policy
+- ueagle-atm: sadly drop unlicensed files
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.4 build
+- QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00072
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Add firmware for new projects
+- rtw89: 8852a: add TX power track R34
+- linux-firmware: Update AMD SEV firmware
+- nxp: add firmware for IW61x WiFi device
+- mediatek MT7922: update bluetooth firmware to 20260605203811
+- mediatek MT7925: update bluetooth firmware to 20260605184935
+- linux-firmware: update firmware for MT7925 WiFi device
+- linux-firmware: update firmware for MT7922 WiFi device
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add LPAICP firmware for shikra platform
+- qcom: Add qdsp6sw firmware for shikra platform
+- linux-firmware: update firmware for MT7986
+- linux-firmware: update firmware for MT7981
+- linux-firmware: update firmware for MT7996
+- linux-firmware: update firmware for MT7992
+- linux-firmware: update firmware for MT7990
+- qcom: Update ADSP firmware for Kaanapali platform
+- qcom: update ADSP firmware for glymur platform
+- qcom: update CDSP firmware for glymur platform
+- QCA: Add bluetooth firmware nvm files for USI/NFA725B
+- linux-firmware: Add firmware file for Intel BlazarIW
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- qcom: update ADSP firmware for qcs615 platform
+- cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+- rtl_bt: Update RTL8852A BT USB firmware to 0x244F_91B6
+- realtek: rt1321: Update the patch code to v1.10
+- amdgpu: DMCUB updates for various ASICs
+- QCA: Update Bluetooth WCN3950 firmware 1.3.0-00108 to 1.3.0-00184
+- qcom: update CDSP firmware for shikra platform
+- qcom: Update ADSP firmware for Glymur platform
+- Remove any files with unknown licenses
+- AGENTS.md, README: address second round of MR review
+- README: document AI assisted contribution convention
+- AGENTS.md: clarify areas raised in MR review
+- Add AGENTS.md for AI coding agents
+- LICENSES: update GPL-2.0 text and references
+- LICENSES: rename GPL-3 to GPL-3.0-only
+- LICENSES: rename Apache-2 to Apache-2.0
+- Move firmware licenses to a LICENSES/ directory
+- qcom: update ADSP firmware for sm8750 platform
+Resolves: RHEL-188388
+
 * Tue Jun 09 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260609-161
 - Update linux-firmware to latest upstream (RHEL-179829)
   Changes since the last update are noted on items below, copied from
