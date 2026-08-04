@@ -4,8 +4,8 @@
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260609
-Release:	23%{?dist}
+Version:	20260707
+Release:	23.1%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
@@ -433,24 +433,24 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %files -f linux-firmware.files
 %dir %{_firmwarepath}
 %doc %{_defaultdocdir}/%{name}
-%license LICENCE.* LICENSE.* GPL*
+%license LICENSES/LICENCE.* LICENSES/LICENSE.* LICENSES/GPL*
 
 %files whence
 %license WHENCE
 
 # GPU firmwares
 %files -n amd-gpu-firmware
-%license LICENSE.radeon LICENSE.amdgpu
+%license LICENSES/LICENSE.radeon LICENSES/LICENSE.amdgpu
 %{_firmwarepath}/amdgpu/
 %{_firmwarepath}/amdnpu/
 %{_firmwarepath}/radeon/
 
 %files -n intel-gpu-firmware
-%license LICENSE.i915
+%license LICENSES/LICENSE.i915
 %{_firmwarepath}/i915/
 
 %files -n nvidia-gpu-firmware
-%license LICENCE.nvidia
+%license LICENSES/LICENCE.nvidia
 %dir %{_firmwarepath}/nvidia
 %{_firmwarepath}/nvidia/a*
 %{_firmwarepath}/nvidia/g*
@@ -458,18 +458,18 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 # Microcode updates
 %files -n amd-ucode-firmware
-%license LICENSE.amd-ucode
+%license LICENSES/LICENSE.amd-ucode
 %{_firmwarepath}/amd/
 %{_firmwarepath}/amdtee/
 %{_firmwarepath}/amd-ucode/
 
 # WiFi/Bluetooth firmwares
 %files -n atheros-firmware
-%license LICENCE.atheros_firmware
-%license LICENSE.QualcommAtheros_ar3k
-%license LICENSE.QualcommAtheros_ath10k
-%license LICENCE.open-ath9k-htc-firmware
-%license qca/NOTICE.txt
+%license LICENSES/LICENCE.atheros_firmware
+%license LICENSES/LICENSE.QualcommAtheros_ar3k
+%license LICENSES/LICENSE.QualcommAtheros_ath10k
+%license LICENSES/LICENCE.open-ath9k-htc-firmware
+%license LICENSES/NOTICE.qca
 %{_firmwarepath}/ar3k/
 %{_firmwarepath}/ath6k/
 %{_firmwarepath}/ath9k_htc/
@@ -479,20 +479,20 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/qca/
 
 %files -n brcmfmac-firmware
-%license LICENCE.broadcom_bcm43xx
-%license LICENCE.cypress
+%license LICENSES/LICENCE.broadcom_bcm43xx
+%license LICENSES/LICENCE.cypress
 %{_firmwarepath}/brcm/
 %{_firmwarepath}/cypress/
 
 %files -n iwlegacy-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3945-*.ucode*
 %{_firmwarepath}/iwlwifi-4965-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-3945-*.ucode*
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-4965-*.ucode*
 
 %files -n iwlwifi-dvm-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-100-*.ucode*
 %{_firmwarepath}/iwlwifi-105-*.ucode*
 %{_firmwarepath}/iwlwifi-135-*.ucode*
@@ -519,7 +519,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-6050-*.ucode*
 
 %files -n iwlwifi-mvm-firmware
-%license LICENCE.iwlwifi_firmware
+%license LICENSES/LICENCE.iwlwifi_firmware
 %{_firmwarepath}/iwlwifi-3160-*.ucode*
 %{_firmwarepath}/iwlwifi-3168-*.ucode*
 %{_firmwarepath}/iwlwifi-7260-*.ucode*
@@ -556,15 +556,15 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/intel/iwlwifi/iwlwifi-sc-a0-*
 
 %files -n libertas-firmware
-%license LICENCE.Marvell LICENCE.OLPC
+%license LICENSES/LICENCE.Marvell LICENSES/LICENCE.OLPC
 %dir %{_firmwarepath}/libertas
 %dir %{_firmwarepath}/mrvl
 %{_firmwarepath}/libertas/*
 %{_firmwarepath}/mrvl/sd8787*
 
 %files -n mt7xxx-firmware
-%license LICENCE.mediatek
-%license LICENCE.ralink_a_mediatek_company_firmware
+%license LICENSES/LICENCE.mediatek
+%license LICENSES/LICENCE.ralink_a_mediatek_company_firmware
 %dir %{_firmwarepath}/mediatek
 %{_firmwarepath}/mediatek/mt76*
 %{_firmwarepath}/mediatek/mt79*
@@ -580,30 +580,30 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 # ^^^ compat symlink mt7662_rom_patch.bin -> mediatek/mt7662_rom_patch.bin
 
 %files -n nxpwireless-firmware
-%license LICENSE.nxp
+%license LICENSES/LICENSE.nxp
 %dir %{_firmwarepath}/nxp
 %{_firmwarepath}/nxp/*
 
 %files -n realtek-firmware
-%license LICENCE.rtlwifi_firmware.txt
+%license LICENSES/LICENCE.rtlwifi_firmware.txt
 %{_firmwarepath}/rtl_bt/
 %{_firmwarepath}/rtlwifi/
 %{_firmwarepath}/rtw88/
 %{_firmwarepath}/rtw89/
 
 %files -n tiwilink-firmware
-%license LICENCE.ti-connectivity
+%license LICENSES/LICENCE.ti-connectivity
 %dir %{_firmwarepath}/ti-connectivity/
 %{_firmwarepath}/ti-connectivity/*
 
 # SMART NIC and network switch firmwares
 %files -n liquidio-firmware
-%license LICENCE.cavium_liquidio
+%license LICENSES/LICENCE.cavium_liquidio
 %dir %{_firmwarepath}/liquidio
 %{_firmwarepath}/liquidio/*
 
 %files -n mrvlprestera-firmware
-%license LICENCE.Marvell
+%license LICENSES/LICENCE.Marvell
 %dir %{_firmwarepath}/mrvl/prestera
 %{_firmwarepath}/mrvl/prestera/*
 
@@ -612,13 +612,13 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 %{_firmwarepath}/mellanox/*
 
 %files -n netronome-firmware
-%license LICENCE.Netronome
+%license LICENSES/LICENCE.Netronome
 %dir %{_firmwarepath}/netronome
 %{_firmwarepath}/netronome/*
 
 # Silicon Vendor specific
 %files -n qcom-firmware
-%license LICENSE.qcom LICENSE.qcom_yamato qcom/NOTICE.txt
+%license LICENSES/LICENSE.qcom LICENSES/LICENSE.qcom_yamato LICENSES/NOTICE.qcom
 %dir %{_firmwarepath}/qcom
 %{_firmwarepath}/qcom/*
 %{_firmwarepath}/a300_pfp.fw*
@@ -627,7 +627,7 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 # Vision and ISP hardware
 %files -n intel-vsc-firmware
-%license LICENSE.ivsc
+%license LICENSES/LICENSE.ivsc
 %dir %{_firmwarepath}/intel/ipu/
 %dir %{_firmwarepath}/intel/vsc/
 %{_firmwarepath}/intel/ipu3-fw.bin*
@@ -638,12 +638,12 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 # Sound codec hardware
 %files -n cirrus-audio-firmware
-%license LICENSE.cirrus
+%license LICENSES/LICENSE.cirrus
 %dir %{_firmwarepath}/cirrus
 %{_firmwarepath}/cirrus/*
 
 %files -n intel-audio-firmware
-%license LICENCE.adsp_sst LICENCE.IntcSST2
+%license LICENSES/LICENCE.adsp_sst LICENSES/LICENCE.IntcSST2
 %dir %{_firmwarepath}/intel/
 %dir %{_firmwarepath}/intel/avs/
 %dir %{_firmwarepath}/intel/catpt/
@@ -656,15 +656,18 @@ sed -e 's/^/%%dir /' linux-firmware.dirs >> linux-firmware.files
 
 # Random other hardware
 %files -n dvb-firmware
-%license LICENSE.dib0700 LICENCE.it913x LICENCE.siano
-%license LICENCE.xc4000 LICENCE.xc5000 LICENCE.xc5000c
+%license LICENSES/LICENSE.dib0700 LICENSES/LICENCE.it913x LICENSES/LICENCE.siano
+%license LICENSES/LICENCE.xc4000 LICENSES/LICENCE.xc5000 LICENSES/LICENCE.xc5000c
 %dir %{_firmwarepath}/av7110/
 %{_firmwarepath}/av7110/*
 %{_firmwarepath}/as102_data*
 %{_firmwarepath}/cmmb*
 %{_firmwarepath}/dvb*
 %{_firmwarepath}/isdbt*
-%{_firmwarepath}/lgs8g75*
+# Removed in:
+# commit 1e6faaf837aea079582214c9c1382e5476175576
+# "Remove any files with unknown licenses"
+#%{_firmwarepath}/lgs8g75*
 %{_firmwarepath}/sms1xxx*
 %{_firmwarepath}/tdmb*
 %{_firmwarepath}/v4l-cx2*
@@ -725,6 +728,71 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Jul 07 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260707-23.1
+- Update linux-firmware to latest upstream ()
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- xe: Release GuC firmware for NVL-S
+- cirrus: cs35l56: Update firmware for the ASUS UX5406SA
+- qcom: vpu: add Gen2 firmware binary for Purwa
+- cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+- QCA: Add Bluetooth firmware for WCN6855 ROM 1.0
+- iwlwifi: add Bz/Sc FW for core24.60-33 release
+- iwlwifi: Add Hr/Gf firmware for core24.60-33 release
+- iwlwifi: update ty/So/Ma firmwares for core24.60-33 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core24.60-33 release
+- cirrus: cs35l56: Add firmware for Cirrus Amps for a few Dell laptops
+- docs: address feedback on LICENSE-CRITERIA.md
+- Adjust statement on existing firmware
+- docs: add LICENSE-CRITERIA.md as project licensing policy
+- ueagle-atm: sadly drop unlicensed files
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.4 build
+- QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00072
+- amdgpu: DMCUB updates for various ASICs
+- linux-firmware: Add firmware for new projects
+- rtw89: 8852a: add TX power track R34
+- linux-firmware: Update AMD SEV firmware
+- nxp: add firmware for IW61x WiFi device
+- mediatek MT7922: update bluetooth firmware to 20260605203811
+- mediatek MT7925: update bluetooth firmware to 20260605184935
+- linux-firmware: update firmware for MT7925 WiFi device
+- linux-firmware: update firmware for MT7922 WiFi device
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add LPAICP firmware for shikra platform
+- qcom: Add qdsp6sw firmware for shikra platform
+- linux-firmware: update firmware for MT7986
+- linux-firmware: update firmware for MT7981
+- linux-firmware: update firmware for MT7996
+- linux-firmware: update firmware for MT7992
+- linux-firmware: update firmware for MT7990
+- qcom: Update ADSP firmware for Kaanapali platform
+- qcom: update ADSP firmware for glymur platform
+- qcom: update CDSP firmware for glymur platform
+- QCA: Add bluetooth firmware nvm files for USI/NFA725B
+- linux-firmware: Add firmware file for Intel BlazarIW
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- qcom: update ADSP firmware for qcs615 platform
+- cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+- rtl_bt: Update RTL8852A BT USB firmware to 0x244F_91B6
+- realtek: rt1321: Update the patch code to v1.10
+- amdgpu: DMCUB updates for various ASICs
+- QCA: Update Bluetooth WCN3950 firmware 1.3.0-00108 to 1.3.0-00184
+- qcom: update CDSP firmware for shikra platform
+- qcom: Update ADSP firmware for Glymur platform
+- Remove any files with unknown licenses
+- AGENTS.md, README: address second round of MR review
+- README: document AI assisted contribution convention
+- AGENTS.md: clarify areas raised in MR review
+- Add AGENTS.md for AI coding agents
+- LICENSES: update GPL-2.0 text and references
+- LICENSES: rename GPL-3 to GPL-3.0-only
+- LICENSES: rename Apache-2 to Apache-2.0
+- Move firmware licenses to a LICENSES/ directory
+- qcom: update ADSP firmware for sm8750 platform
+Resolves: RHEL-188389
+
 * Tue Jun 09 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260609-23
 - Update linux-firmware to latest upstream (RHEL-179828)
   Changes since the last update are noted on items below, copied from
