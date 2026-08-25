@@ -4,8 +4,8 @@
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260707
-Release:	23.1%{?dist}
+Version:	20260804
+Release:	23.2%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
 URL:		http://www.kernel.org/
@@ -728,8 +728,36 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Aug 04 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260804-23.2
+- Update linux-firmware to latest upstream (RHEL-214057)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- linux-firmware: Add firmware binary files for new HP project (Messi)
+- qcom: Add gpu firmwares for Eliza chipset
+- cirrus: cs35l57: Add firmware for Cirrus Amps for some Samsung laptops
+- rtw89: 8922d: add fw 0.35.113.2
+- qcom: venus-5.4: fix vp9 decoder assertion failure
+- qla2xxx: Add ql2900_fw.bin firmware for 29xx adapters
+- qcom: Update qdsp6sw firmware for shikra platform
+- amdgpu: DMCUB updates for various ASICs
+- intel_vpu: Update NPU firmware
+- qcom: Update DSP firmware for qcs8300 platform
+- linux-firmware: Add firmware for new soundwire projects
+- rtw88: add firmware v41.0.0 for RTL8723B
+- linux-firmware: Update AMD cpu microcode
+- linux-firmware: Add firmware file for Intel BlazarIW
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- amdgpu: DMCUB updates for various ASICs
+- amdgpu: DMCUB updates for various ASICs
+- qcom: add ADSP firmware for hawi platform
+- powervr: add firmware for Imagination Technologies BXM-4-64 GPU
+- qcom: Update DSP firmware for sa8775p platform
+Resolves: RHEL-214057
+
 * Tue Jul 07 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260707-23.1
-- Update linux-firmware to latest upstream ()
+- Update linux-firmware to latest upstream (RHEL-188389)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
 - xe: Release GuC firmware for NVL-S
