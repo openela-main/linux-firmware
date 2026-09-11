@@ -1,12 +1,12 @@
-%global checkout 9b624be3
+%global checkout a968c5c2
 
-%global firmware_release 143
+%global firmware_release 142
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260813
+Version:	20260803
 Release:	%{firmware_release}.git%{checkout}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -529,88 +529,6 @@ if st and st.type == "directory" then
 end
 
 %changelog
-* Thu Aug 13 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260813-143.git9b624be3
-- Update linux-firmware to latest upstream (RHEL-233673)
-  Changes since the last update are noted on items below, copied from
-  the git changelog of upstream linux-firmware repository.
-- ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00228-QCACOLSWPL_V1_TO_SILICON-1
-- cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
-- amdgpu: update vangogh firmware
-- amdgpu: update VPE 6.1.1 firmware
-- amdgpu: update VCN 4.0.6 firmware
-- amdgpu: update PSP 14.0.1 firmware
-- amdgpu: update GC 11.5.1 firmware
-- amdgpu: update VPE 6.1.0 firmware
-- amdgpu: update VCN 4.0.5 firmware
-- amdgpu: update PSP 14.0.0 firmware
-- amdgpu: update GC 11.5.0 firmware
-- amdgpu: update renoir firmware
-- amdgpu: update yellow carp firmware
-- amdgpu: update raven2 firmware
-- amdgpu: update raven firmware
-- amdgpu: update VCN 3.1.2 firmware
-- amdgpu: update PSP 13.0.5 firmware
-- amdgpu: update GC 10.3.6 firmware
-- amdgpu: update picasso firmware
-- amdgpu: update PSP 13.0.11 firmware
-- amdgpu: update GC 11.0.4 firmware
-- amdgpu: update VCN 4.0.2 firmware
-- amdgpu: update PSP 13.0.4 firmware
-- amdgpu: update GC 11.0.1 firmware
-- amdgpu: update VCN 5.0.0 firmware
-- amdgpu: update SMU 14.0.3 firmware
-- amdgpu: update PSP 14.0.3 firmware
-- amdgpu: update GC 12.0.1 firmware
-- amdgpu: update SMU 14.0.2 firmware
-- amdgpu: update PSP 14.0.2 firmware
-- amdgpu: update GC 12.0.0 firmware
-- amdgpu: update vcn 4.0.4 firmware
-- amdgpu: update SMU 13.0.7 firmware
-- amdgpu: update PSP 13.0.7 firmware
-- amdgpu: update GC 11.0.2 firmware
-- amdgpu: update SMU 13.0.10 firmware
-- amdgpu: update SDMA 6.0.3 firmware
-- amdgpu: update PSP 13.0.10 firmware
-- amdgpu: update GC 11.0.3 firmware
-- amdgpu: update VCN 4.0.0 firmware
-- amdgpu: update SMU 13.0.0 firmware
-- amdgpu: update PSP 13.0.0 firmware
-- amdgpu: update GC 11.0.0 firmware
-- amdgpu: update beige goby firmware
-- amdgpu: update dimgrey cavefish firmware
-- amdgpu: update navy flounder firmware
-- amdgpu: update sienna cichlid firmware
-- amdgpu: update navi14 firmware
-- amdgpu: update navi12 firmware
-- amdgpu: update navi10 firmware
-- amdgpu: add PSP 13.0.15 firmware
-- amdgpu: update VCN 5.0.1 firmware
-- amdgpu: update PSP 13.0.12 firmware
-- amdgpu: update GC 9.5.0 firmware
-- amdgpu: update PSP 13.0.14 firmware
-- amdgpu: update GC 9.4.4 firmware
-- amdgpu: update PSP 14.0.5 firmware
-- amdgpu: update GC 11.5.3 firmware
-- amdgpu: update VPE 6.1.3 firmware
-- amdgpu: update PSP 14.0.4 firmware
-- amdgpu: update GC 11.5.2 firmware
-- amdgpu: update green sardine firmware
-- amdgpu: update arcturus firmware
-- amdgpu: update VCN 4.0.3 firmware
-- amdgpu: update PSP 13.0.6 firmware
-- amdgpu: update GC 9.4.3 firmware
-- amdgpu: update aldebaran firmware
-- linux-firmware: update firmware for MT7922 WiFi device
-- morsemicro: add firmware for mm8108 support
-- ath10k: WCN3990 hw1.0: update board-2.bin
-- linux-firmware: Update firmware for an8811hb 2.5G ethernet phy
-- xe: Update GUC to v70.72.1 for BMG, LNL, PTL, NVL-S
-- mediatek MT7922: update bluetooth firmware to 20260724143815
-- airoha: update AN7583 NPU firmwares to version 0.5
-- linux-firmware: Add firmware for new project
-- qcom: Add gpu firmwares for Eliza chipset
-Resolves: RHEL-233673
-
 * Mon Aug 03 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260803-142.gita968c5c2
 - Update linux-firmware to latest upstream (RHEL-214056)
   Changes since the last update are noted on items below, copied from
