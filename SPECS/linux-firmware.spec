@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 161.2
+%global firmware_release 161.3
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260804
+Version:	20260827
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -550,6 +550,120 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Thu Aug 27 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260827-161.3
+- Update linux-firmware to latest upstream (RHEL-245400)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- qcom/sa8775p: update signature on cdsp1 firmware
+- cirrus: cs35l54: Add Cirrus CS35L54 firmware mappings for an HP laptop
+- linux-firmware: Upload firmware for tas2573 stereo
+- intel: avs: Add AudioDSP base firmware for LKF platforms
+- intel: avs: Update AudioDSP firmware for APL-based platforms
+- intel: avs: Update AudioDSP firmware for SKL-based platforms
+- intel: catpt: Update AudioDSP firmware for BDW platforms
+- mediatek MT7925: update bluetooth firmware to 20260813113236
+- linux-firmware: update firmware for MT7925 WiFi device
+- copy-firmware: Do not fail without GNU parallel
+- QCA: Update Bluetooth WCN3988 firmware 2.1.5.c5-00042 to 2.1.5.c5-00060
+- amdgpu: add VPE 2.0.0 firmware
+- amdgpu: add SDMA 6.1.4 firmware
+- amdgpu: add DCN 4.2 firmware
+- amdgpu: add PSP 15.0.9 firmware
+- amdgpu: add PSP 15.0.0 firmware
+- amdgpu: add GC 11.7.1 firmware
+- amdgpu: add GC 11.7.0 firmware
+- amdgpu: DMCUB update for DCN314
+- qca: Update Bluetooth QCC2072 UART interface firmware from 1.1.0-00295 to 1.1.0-00340
+- iwlwifi: add Bz/Sc FW for core24.70-49 release
+- iwlwifi: Add Hr/Gf firmware for core24.70-49 release
+- iwlwifi: update ty/So/Ma firmwares for core24.70-49 release
+- iwlwifi: update cc/Qu/QuZ firmwares for core24.70-49 release
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Samsung laptops
+- cirrus: cs42l45: Add new SSIDs for Dell laptops
+- qcom: add NSP firmware for nord platform
+- cirrus: cs35l56: Add firmware for Cirrus Amps for an ASUS laptop
+- cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for some Dell laptops
+- WHENCE: Move qcom qcdxkmsuc8[23]80.mbn firmwares to Adreno section
+- WHENCE: Separate qcom SoC remoteproc firmwares
+- amdgpu: DMCUB updates for various ASICs
+- Revert "amdgpu: update GC 10.3.6 firmware"
+- qcom: add CDSP firmware for eliza platform
+- qcom: vpu: add Gen2 firmware binary for Eliza
+- ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00228-QCACOLSWPL_V1_TO_SILICON-1
+- cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+- amdgpu: update vangogh firmware
+- amdgpu: update VPE 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VPE 6.1.0 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update raven2 firmware
+- amdgpu: update raven firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update GC 10.3.6 firmware
+- amdgpu: update picasso firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update SMU 14.0.3 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update SMU 14.0.2 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update vcn 4.0.4 firmware
+- amdgpu: update SMU 13.0.7 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update SDMA 6.0.3 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update SMU 13.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: add PSP 13.0.15 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update PSP 13.0.12 firmware
+- amdgpu: update GC 9.5.0 firmware
+- amdgpu: update PSP 13.0.14 firmware
+- amdgpu: update GC 9.4.4 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update VPE 6.1.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update arcturus firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: update aldebaran firmware
+- linux-firmware: update firmware for MT7922 WiFi device
+- morsemicro: add firmware for mm8108 support
+- ath10k: WCN3990 hw1.0: update board-2.bin
+- linux-firmware: Update firmware for an8811hb 2.5G ethernet phy
+- xe: Update GUC to v70.72.1 for BMG, LNL, PTL, NVL-S
+- mediatek MT7922: update bluetooth firmware to 20260724143815
+- airoha: update AN7583 NPU firmwares to version 0.5
+
 * Tue Aug 04 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260804-161.2
 - Update linux-firmware to latest upstream (RHEL-214058)
   Changes since the last update are noted on items below, copied from
