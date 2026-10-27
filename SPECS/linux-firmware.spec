@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 161.3
+%global firmware_release 161.4
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260827
+Version:	20260929
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -550,6 +550,178 @@ if st and st.type == "directory" then
 end
 
 %changelog
+* Tue Sep 29 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260929-23.4
+- Update linux-firmware to latest upstream (RHEL-262481)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- QCA: Add QCA2066 Bluetooth firmware hpnv21g.30c
+- QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00653
+- Revert "qcom: update ADSP firmware for qcs615 platform"
+- qcom: Add gpu firmwares for Hawi and Maili chipsets
+- qcom: update Rubik Pi 3 ADSP firmware
+- cirrus: cs35l56: Correct firmware instances for 103c8c52 and 103c8c53
+- contrib: post the MR comment to the project of the merge request
+- amdgpu: update VPE 2.0.0 firmware
+- amdgpu: update VCN 5.3.0 firmware
+- amdgpu: update GC 11.7.0 MES firmware
+- amdgpu: update PSP 15.0.9 firmware
+- amdgpu: update PSP 15.0.0 firmware
+- qcom: vpu: add Gen2 firmware binary for Hawi
+- qcom: vpu: add Gen2 firmware binary for Maili
+- linux-firmware: Update AMD cpu microcode
+- iwlwifi: add Bz/Sc FW for core24.80-41 release
+- iwlwifi: Update Bz/Fm firmware for core24.80-41 release
+- iwlwifi: Add Hr/Gf firmware for core24.80-41 release
+- iwlwifi: update ty/So/Ma firmwares for core24.80-41 release
+- iwlwifi: Add cc/Qu/QuZ firmwares for core24.80-41 release
+- linux-firmware: mwifiex: add IW416 firmware
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- ath12k: QCC2072 hw1.0: update board-2.bin
+- ci: add Qualcomm firmware version diff MR comment job
+- qcom: sdx61: add missing firmware version
+- qcom: sdx35: add missing firmware version
+- qcom: aic100: add missing firmware versions
+- qcom: qdu100: add missing firmware versions
+- qcom: sdm845: add missing modem firmware version
+- qcom: x1e80100: add missing Dell XPS 13 9345 DSP versions
+- qcom: add missing Adreno ZAP shader versions
+- contrib: report the version of the Qualcomm Bluetooth firmware
+- contrib: detect the version of Adreno GMU firmware
+- contrib: detect the version of Adreno RGMU firmware
+- contrib: detect the version of Adreno ZAP shaders
+- contrib: detect the version of Adreno SQE and AQE microcode
+- contrib: report Iris video firmware versions in the WHENCE format
+- contrib: add Qualcomm firmware version scripts
+- contrib: move common firmware script helpers to fw_helpers.py
+- qcom: use the WHENCE version format for the x1e80100 video firmware
+- qca: separate the WCN685x uart firmware revisions
+- qca: group the QCA61x4 USB firmware files
+- qca: drop duplicate version lines
+- qca: fix the version of the QCA6698 Bluetooth firmware
+- qca: fix the version of the WCN785x USB firmware
+- qcom: fix the version of the a660 GMU firmware
+- qcom: fix the version of the Eliza SQE microcode
+- qcom: fix the version of the QCS615 ZAP shader
+- qcom/shikra: link WiFi firmware from the ath10k subdir
+- Revert "amdgpu: update GC 11.0.0 firmware"
+- Revert "amdgpu: update GC 11.0.0 firmware"
+- amdgpu: DMCUB updates for various ASICs
+- intel: Update ibt-00a0-01a1-pci.ddc for BE211 - Whale Peak2 (WhP2)
+- ath11k: WCN6855 hw2.0: update board-2.bin
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+- qcom: add CDSP firmware for hawi platform
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+- cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+- QCA: Update Bluetooth firmware for QCC2072 UART interface: 1.1.0-00340 to 1.1.0-00355
+- qcom: add ADSP firmware for maili platform
+- intel_vpu: Update NPU firmware
+- rtl_nic: add firmware rtl8261d.bin for RTL8261d
+- qcom: vpu: add Gen2 firmware binary for sc8280xp
+- qcom/sdm845: Let SHIFT6mq use the provided Wi-Fi firmware
+- show explicit amdgpu downgrades
+- Revert "amdgpu: update VCN 5.3.0 firmware"
+- Revert "amdgpu: update VCN 5.0.1 firmware"
+- Revert "amdgpu: update VCN 5.0.0 firmware"
+- Revert "amdgpu: update VCN 4.0.6 firmware"
+- Revert "amdgpu: update VCN 4.0.6 firmware"
+- Revert "amdgpu: update VCN 4.0.5 firmware"
+- Revert "amdgpu: update VCN 4.0.5 firmware"
+- Revert "amdgpu: update vcn 4.0.4 firmware"
+- Revert "amdgpu: update VCN 4.0.3 firmware"
+- Revert "amdgpu: update VCN 4.0.2 firmware"
+- Revert "amdgpu: update VCN 4.0.2 firmware"
+- Revert "amdgpu: update VCN 4.0.0 firmware"
+- Revert "amdgpu: update VCN 3.1.2 firmware"
+- amdgpu: partially revert 9f1eb5124635
+- amdgpu: partially revert e3e45091597e
+- amdgpu: partially revert 7df10898a825
+- amdgpu: partially revert 7b262e1ddce5
+- amdgpu: partially revert 17ee8fdf9196
+- amdgpu: partially revert 063e840eb6a5
+- Update discussions API
+- Update MR comment token secret
+- Drop trailing character for path matching on amdgpu/
+- ci: add amdgpu firmware version diff MR comment job
+- Add amdgpu FW header parsing script to contrib/
+- WHENCE: add missing symlink for TaiqiCat (TQC) A01
+- Partially revert "amdgpu: DMCUB updates for various ASICs"
+- ath10k: WCN3990: hw1.0: add shikra firmware files
+- cirrus: cs35l57: Add firmware for Cirrus Amps for a Lenovo laptop
+- amdgpu: update vangogh firmware
+- amdgpu: update VPE 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update SMU 14.0.3 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update SMU 13.0.7 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update SMU 13.0.10 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update SMU 13.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update PSP 15.0.9 firmware
+- amdgpu: update GC 11.7.1 firmware
+- amdgpu: update VCN 5.3.0 firmware
+- amdgpu: update PSP 15.0.0 firmware
+- amdgpu: update GC 11.7.0 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update VPE 6.1.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: DMCUB updates for various ASICs
+- cirrus: cs35l56: Update firmware for Cirrus Amps for some HP laptops
+- qcom: Update ADSP firmware for sa8775p platform
+- cs35l56: Add non-spkid firmware names for Thinkbook 16P Gen6 (17AA3921)
+- QCA: Add Bluetooth firmware for WCN7750 on Maili platform
+- qcom: point qcs8300 firmawre to sa8775p instance
+- qcom: update ADSP firmware for qcs615 platform
+- qcom: Add ADSP firmware for sc8280xp-radxa-dragon-q8b
+- qcom: vpu: Update video firmware binary for Glymur
+- qcom: sdm845: Add GPU firmware for SHIFT6mq
+- qcom: Update ADSP firmware for QCM6490 platform
+- amdgpu: DMCUB updates for various ASICs
+- cirrus: Version and cleanup of SDCA FW files
+- cirrus: cs35l41: Add Firmware for ASUS Zenbook Laptop using CS35L41 HDA
+- QCA: Add Bluetooth firmware hmtnv20.b201/b202 for WCN7850 on Nord platform
+- ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00277-QCACOLSWPL_V1_TO_SILICONZ-1
+- [cypress]: Update firmware for cyfmac43455 SDIO
+- QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00079
+- amdgpu: DMCUB updates for various ASICs
+- amdgpu: add VCN 5.3.0 firmware
+- qcom: update CDSP firmware for x1e80100 platform
+- qcom: add QUPv3 firmware for nord
+- qcom: add HPASS firmware for nord platform
+- linux-firmware: Update firmware file for Intel BlazarIW core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel Scorpius core
+
 * Thu Aug 27 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260827-161.3
 - Update linux-firmware to latest upstream (RHEL-245400)
   Changes since the last update are noted on items below, copied from
