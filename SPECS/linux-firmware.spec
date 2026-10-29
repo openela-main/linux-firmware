@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global firmware_release 161.4
+%global firmware_release 161.5
 
 %global _firmwarepath	/usr/lib/firmware
 %define _binaries_in_noarch_packages_terminate_build 0
 
 Name:		linux-firmware
-Version:	20260929
+Version:	20261026
 Release:	%{firmware_release}%{?dist}
 Summary:	Firmware files used by the Linux kernel
 License:	GPL+ and GPLv2+ and MIT and Redistributable, no modification permitted
@@ -550,7 +550,117 @@ if st and st.type == "directory" then
 end
 
 %changelog
-* Tue Sep 29 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260929-23.4
+* Mon Oct 26 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20261026-161.5
+- Update linux-firmware to latest upstream (RHEL-283677)
+  Changes since the last update are noted on items below, copied from
+  the git changelog of upstream linux-firmware repository.
+- linux-firmware: nxpwifi: add firmware for IW610 WiFi device
+- QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00680
+- WHENCE: fix version string for QCA2066 firmware
+- ath10k: WCN3990: hw1.0: update shikra/wlanmdsp.mbn to WLAN.HL.3.3.7.c5-00226
+- linux-firmware: qcom: sync audioreach firmwares from v1.0.5 build
+- qcom: Add gpu firmwares for Nord chipset
+- contrib: detect the Bluetooth firmware format by its path
+- qcom:x1e80100: Support for Lenovo Yoga Slim7 Snapdragon platform CDSP
+- mediatek MT7925: update bluetooth firmware to 20261016233221
+- linux-firmware: update firmware for MT7925 WiFi device
+- rockchip: add PCIe3 PHY firmware for snps-pcie3
+- Update ADSP firmware for Qualcomm qcs615 platform.
+- Revert "amdgpu: update GC 11.0.0 firmware"
+- amdgpu: update vangogh firmware
+- amdgpu: update VPE 6.1.1 firmware
+- amdgpu: update VCN 4.0.6 firmware
+- amdgpu: update PSP 14.0.1 firmware
+- amdgpu: update GC 11.5.1 firmware
+- amdgpu: update VCN 4.0.5 firmware
+- amdgpu: update PSP 14.0.0 firmware
+- amdgpu: update GC 11.5.0 firmware
+- amdgpu: update renoir firmware
+- amdgpu: update yellow carp firmware
+- amdgpu: update raven2 firmware
+- amdgpu: update raven firmware
+- amdgpu: update VCN 3.1.2 firmware
+- amdgpu: update PSP 13.0.5 firmware
+- amdgpu: update picasso firmware
+- amdgpu: update PSP 13.0.11 firmware
+- amdgpu: update GC 11.0.4 firmware
+- amdgpu: update VCN 4.0.2 firmware
+- amdgpu: update PSP 13.0.4 firmware
+- amdgpu: update GC 11.0.1 firmware
+- amdgpu: update VCN 5.0.0 firmware
+- amdgpu: update PSP 14.0.3 firmware
+- amdgpu: update GC 12.0.1 firmware
+- amdgpu: update PSP 14.0.2 firmware
+- amdgpu: update GC 12.0.0 firmware
+- amdgpu: update VCN 4.0.4 firmware
+- amdgpu: update PSP 13.0.7 firmware
+- amdgpu: update GC 11.0.2 firmware
+- amdgpu: update PSP 13.0.10 firmware
+- amdgpu: update GC 11.0.3 firmware
+- amdgpu: update VCN 4.0.0 firmware
+- amdgpu: update PSP 13.0.0 firmware
+- amdgpu: update GC 11.0.0 firmware
+- amdgpu: update beige goby firmware
+- amdgpu: update dimgrey cavefish firmware
+- amdgpu: update navy flounder firmware
+- amdgpu: update sienna cichlid firmware
+- amdgpu: update navi14 firmware
+- amdgpu: update navi12 firmware
+- amdgpu: update navi10 firmware
+- amdgpu: update VCN 5.0.1 firmware
+- amdgpu: update GC 9.4.4 firmware
+- amdgpu: update PSP 15.0.9 firmware
+- amdgpu: update GC 11.7.1 firmware
+- amdgpu: update VCN 5.3.0 firmware
+- amdgpu: update PSP 15.0.0 firmware
+- amdgpu: update PSP 14.0.5 firmware
+- amdgpu: update GC 11.5.3 firmware
+- amdgpu: update PSP 14.0.4 firmware
+- amdgpu: update GC 11.5.2 firmware
+- amdgpu: update green sardine firmware
+- amdgpu: update VCN 4.0.3 firmware
+- amdgpu: update PSP 13.0.6 firmware
+- amdgpu: update GC 9.4.3 firmware
+- amdgpu: DMCUB updates for various ASICs
+- rtw89: init board_elm.bin with stuffs for board ID 1
+- rtw89: 8922d: update fw 0.35.119.3 with format suffix -1
+- rtw89: 8922d: update fw 0.35.115.2
+- wfx: update to firmware 3.18
+- nvidia: Update and add missing firmware files for Tegra SoCs
+- qcom:Update qdsp6sw firmware for shikra platform
+- aic: Add AIC8800D80 Bluetooth and Wi-Fi firmware
+- qcom: update HPASS firmware for nord platform
+- amdgpu: DMCUB updates for various ASICs
+- amdgpu: update gc 11.0.1 and 11.0.4 firmware
+- qcom: update LPAICP firmware for shikra platform
+- ath12k: WCN7850 hw2.0: update board-2.bin
+- panthor: Add initial firmware for Architecture 14.8 Arm Mali GPU
+- qcom: update ADSP firmware for glymur platform
+- cirrus: cs35l41: Add firmware and tuning for Lenovo Thinkbook laptops
+- cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops
+- cirrus: cs42l45: Add CS42L49 SDCA codec firmware for Dell laptops
+- qcom: fix qcs8300 gpdspr.jsn symlink target
+- qcom: update ADSP firmware for x1e80100 platform
+- linux-firmware: Update firmware file for Intel Solar core
+- linux-firmware: Update firmware file for Intel Magnetar core
+- linux-firmware: Update firmware file for Intel BlazaruHrpGfp core
+- linux-firmware: Update firmware file for Intel BlazariGfp core
+- linux-firmware: Update firmware file for Intel BlazarUFmPArl core
+- linux-firmware: Update firmware file for Intel BlazarI core
+- linux-firmware: Update firmware file for Intel BlazariFmp core
+- linux-firmware: Update firmware file for Intel BlazarU core
+- linux-firmware: Update firmware file for Intel ScorpiusGfp core
+- linux-firmware: Update firmware file for Intel Scorpius core
+- cirrus: cs35l57 cs35l63: Add firmware for some Dell laptops
+- WHENCE: add SPDX license references for non-standard license texts
+- WHENCE: add initial SPDX identifiers
+- cirrus: cs42l45: Add CS42L45 SDCA codec firmware for a Dell laptop
+- cirrus: cs35l41: Add support for Lenovo Yoga Slim 7 Carbon 14ACN6
+- linux-firmware: Add ISH firmware files for Intel Nova Lake-H/S platforms
+- qcom: add ADSP firmware for eliza platform
+- qcom: update ADSP firmware for hawi platform
+
+* Tue Sep 29 2026 Denys Vlasenko <dvlasenk@redhat.com> - 20260929-161.4
 - Update linux-firmware to latest upstream (RHEL-262481)
   Changes since the last update are noted on items below, copied from
   the git changelog of upstream linux-firmware repository.
